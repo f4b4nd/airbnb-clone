@@ -1,27 +1,54 @@
-# AngularAirbnb
+# Airbnb Clone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+## Context 
+The goal of this project is to focus on Frontend development, ie :
+- fidelity with official website [airbnb.com](https://airbnb.com)
+- UX / UI (responsive, clarity, animations)
 
-## Development server
+Pages to implement :
+- Home (filters, grid with defaults houses results)
+- House detail page
+- Displaying results is basically the same template as "home" (no need to display on a map)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+We don't want to spend much time on backend. That's why we'll just implement a basic API that is only able to provide data. 
+Which means: 
+- no authentification system
+- only GET requests (no POST, PUT, PATCH, DELETE, etc.)
 
-## Code scaffolding
+First idea is to use a JSON file containing data, then use GraphQL on Frontend-side to make queries.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## 1. Run project
+To launch this project, just run the command : 
+```
+ng serve
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 2. TODO :
 
-## Running unit tests
+### 2.1 Interface
+- [ ] Système de routing
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### 2.1.1 Navbar
+- [ ] dates filter
+- [ ] filter by category (navbar)
+- [ ] filter modal : by price, number of rooms, type, equipements
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### 2.1.2 Body
+- [ ] implement search Engine
+- [ ] create cards
+- [ ] implement like system
+- [ ] create navigation
+- [ ] implement filters
+- [ ] implement google maps
 
-## Further help
+### 2.2 API
+- [ ] create API  
+- [ ] Translation system ?
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 2.3 Limits
+
+- [ ] first, we won't implement an authentification system, we'll just use a basic profile with "liked houses"
+
+
