@@ -7,13 +7,15 @@ import { NavbarComponent } from './components/navbar/navbar.component'
 import { HomeComponent } from './pages/home/home.component'
 import { ApartmentComponent } from './pages/apartment/apartment.component'
 import { appRoutingModule } from './app.routing'
+import { CardComponent } from './components/card/card.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ApartmentComponent,
-    NavbarComponent
+    NavbarComponent, 
+    CardComponent
   ],
   imports: [
     BrowserModule,
