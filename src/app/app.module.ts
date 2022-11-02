@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
-import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { NavbarComponent } from './components/navbar/navbar.component'
-import { HomeComponent } from './pages/home/home.component'
-import { ApartmentComponent } from './pages/apartment/apartment.component'
+
+import { HomeComponent, ApartmentComponent } from './pages'
+
+import { NavbarComponent, CardComponent } from './components'
+
 import { appRoutingModule } from './app.routing'
-import { CardComponent } from './components/card/card.component'
 
 @NgModule({
   declarations: [

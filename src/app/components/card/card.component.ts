@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
     selector: 'card',
@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
 })
 
 export class CardComponent {
-    title = "logo"
-    src = ""
-    rating = "5"
-    price = "123€"
-    location = "Parc national de la Haute Campine"
-    date = "14-19 nov"
-    ownerType = "Particulier"
+    @Input() title = ""
+    @Input() src = ""
+    @Input() rating = ""
+    @Input() price = ""
+    @Input() location = ""
+    @Input() date = ""
+    @Input() ownerType = ""
 }
