@@ -1,14 +1,18 @@
 <div class="home"> 
     <h1> Home </h1>
 
-    <card 
-        [title]="title"
-        [rating]="rating"
-        [price]="price"
-        [location]="location"
-        [date]="date"
-        [ownerType]="ownerType"
-    > 
-    </card>
+    <div class="cards" *ngFor="let house of houses">
+
+        <card 
+            [title]="house.name"
+            [rating]="house.description"
+            [price]="house.price"
+            [location]="house.location"
+            [date]="house.date"
+            [ownerType]="house.ownerType"
+        > 
+        </card>
+
+    </div>
 
 </div>

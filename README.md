@@ -52,3 +52,4 @@ ng serve
 - [ ] first, we won't implement an authentification system, we'll just use a basic profile with "liked houses"
 
 
+Mock data comes from : http://insideairbnb.com/get-the-data/
