@@ -4,31 +4,37 @@
 
     <card-group 
         class="grid grid-cols-cards gap-[1em]"
-        [items]="houses"
+        [items]="apartments"
     >
 
-        <card
-            *ngFor="let house of houses"
-            class="card h-[400px] flex flex-col"
-            [title]="house.name" 
-            [src]="house.picture_url"
-        > 
+        <a 
+            *ngFor="let apartment of apartments"
+            routerLink="/apartment/{{apartment.id}}"
+        >
 
-            <card-row class="card__row flex justify-between"> 
-                <card-text class="card__title" [text]="house.neighbourhood"></card-text>
-                <card-text class="card__text" [text]="house.review_scores_accuracy"></card-text>
-            </card-row>
+            <card
+                class="card h-[400px] flex flex-col"
+                [title]="apartment.name" 
+                [src]="apartment.picture_url"
+            > 
 
-            <card-text class="card__text" [text]="house.name"></card-text>
+                <card-row class="card__row flex justify-between"> 
+                    <card-text class="card__title" [text]="apartment.neighbourhood"></card-text>
+                    <card-text class="card__text" [text]="apartment.review_scores_accuracy"></card-text>
+                </card-row>
 
-            <card-row class="card__row">
-                <card-text class="card__text" [text]="house.host_since"></card-text>
-                <card-text class="card__text" [text]="house.host_name"></card-text>
-            </card-row>
+                <card-text class="card__text" [text]="apartment.name"></card-text>
 
-            <card-text class="card__text" [text]="house.price"></card-text>
+                <card-row class="card__row">
+                    <card-text class="card__text" [text]="apartment.host_since"></card-text>
+                    <card-text class="card__text" [text]="apartment.host_name"></card-text>
+                </card-row>
 
-        </card>
+                <card-text class="card__text" [text]="apartment.price"></card-text>
+
+            </card>
+
+        </a>
 
     </card-group>
 

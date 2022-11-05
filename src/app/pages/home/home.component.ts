@@ -7,20 +7,21 @@ import { Observable } from 'rxjs'
 })
 
 export class HomeComponent implements OnInit {
-    houses!: any[]
 
-    private _jsonURL = './assets/houses-data-mock-50-rows.json'
+    public apartments!: any[]
+
+    private _jsonURL = './assets/apartments-data-mock-50-rows.json'
 
     constructor(private http: HttpClient) {
 
-        this.getHouses().subscribe(data => {
+        this.getApartments().subscribe(data => {
             console.log(data)
-            this.houses = data
+            this.apartments = data
         })
     
     }
 
-    public getHouses(): Observable<any> {
+    public getApartments(): Observable<any> {
         return this.http.get(this._jsonURL)
     }
 
