@@ -2,25 +2,29 @@
 
     <h1> Home </h1>
 
-    <card-group [items]="houses" *ngFor="let house of houses">
+    <card-group [items]="houses">
 
-        <card [title]="house.name" [src]="house.name"> 
+        <card 
+            *ngFor="let house of houses" 
+            [title]="house.name" 
+            [src]="house.picture_url"
+        > 
 
             <card-row> 
 
-                <card-text class="card__title" [text]="house.name"> </card-text>
+                <card-text class="card__title" [text]="house.neighbourhood"> </card-text>
 
-                <card-text class="card__text" [text]="house.rating"> </card-text>
+                <card-text class="card__text" [text]="house.review_scores_accuracy"> </card-text>
 
             </card-row>
 
-            <card-text class="card__text" [text]="house.location"> </card-text>
+            <card-text class="card__text" [text]="house.name"> </card-text>
 
             <card-row>
 
-                <card-text class="card__text" [text]="house.date"> </card-text>
+                <card-text class="card__text" [text]="house.host_since"> </card-text>
 
-                <card-text class="card__text" [text]="house.ownerType"> </card-text>
+                <card-text class="card__text" [text]="house.host_name"> </card-text>
 
             </card-row>
 

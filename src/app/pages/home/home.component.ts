@@ -9,7 +9,7 @@ import { Observable } from 'rxjs'
 export class HomeComponent implements OnInit {
     houses!: any[]
 
-    private _jsonURL = './assets/houses-data-mock.json'
+    private _jsonURL = './assets/houses-data-mock-50-rows.json'
 
     constructor(private http: HttpClient) {
 
