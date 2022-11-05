@@ -6,7 +6,7 @@ import { AppComponent } from './app.component'
 
 import { HomeComponent, ApartmentComponent } from './pages'
 
-import { NavbarComponent, CardComponent } from './components'
+import { NavbarComponent, CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent} from './components'
 
 import { appRoutingModule } from './app.routing'
 
@@ -16,7 +16,10 @@ import { appRoutingModule } from './app.routing'
     HomeComponent,
     ApartmentComponent,
     NavbarComponent, 
-    CardComponent
+    CardComponent,
+    CardTextComponent,
+    CardGroupComponent,
+    CardRowComponent,
   ],
   imports: [
     BrowserModule,

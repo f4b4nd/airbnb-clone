@@ -1,18 +1,34 @@
 <div class="home"> 
+
     <h1> Home </h1>
 
-    <div class="cards" *ngFor="let house of houses">
+    <card-group [items]="houses" *ngFor="let house of houses">
 
-        <card 
-            [title]="house.name"
-            [rating]="house.description"
-            [price]="house.price"
-            [location]="house.location"
-            [date]="house.date"
-            [ownerType]="house.ownerType"
-        > 
+        <card [title]="house.name" [src]="house.name"> 
+
+            <card-row> 
+
+                <card-text class="card__title" [text]="house.name"> </card-text>
+
+                <card-text class="card__text" [text]="house.rating"> </card-text>
+
+            </card-row>
+
+            <card-text class="card__text" [text]="house.location"> </card-text>
+
+            <card-row>
+
+                <card-text class="card__text" [text]="house.date"> </card-text>
+
+                <card-text class="card__text" [text]="house.ownerType"> </card-text>
+
+            </card-row>
+
+            <card-text class="card__text" [text]="house.price"> </card-text>
+
         </card>
 
-    </div>
+
+    </card-group>
 
 </div>
