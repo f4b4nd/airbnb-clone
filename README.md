@@ -52,4 +52,6 @@ ng serve
 - [ ] first, we won't implement an authentification system, we'll just use a basic profile with "liked houses"
 
 
-Mock data comes from : http://insideairbnb.com/get-the-data/
+# Api
+This project uses json-server to mock API.
+Mock data files come from : http://insideairbnb.com/get-the-data/

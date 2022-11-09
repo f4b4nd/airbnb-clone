@@ -6,7 +6,7 @@ import { AppComponent } from './app.component'
 
 import { HomeComponent, ApartmentComponent } from './pages'
 
-import { NavbarComponent, CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent} from './components'
+import { TopNavbarComponent, CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent } from './components'
 
 import { appRoutingModule } from './app.routing'
 
@@ -15,7 +15,7 @@ import { appRoutingModule } from './app.routing'
     AppComponent,
     HomeComponent,
     ApartmentComponent,
-    NavbarComponent, 
+    TopNavbarComponent, 
     CardComponent,
     CardTextComponent,
     CardGroupComponent,

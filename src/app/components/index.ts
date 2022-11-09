@@ -1,3 +1,3 @@
 export { CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent } from './card'
 
-export { NavbarComponent } from "./navbar/navbar.component"
+export { TopNavbarComponent } from "./top-navbar/top-navbar.component"

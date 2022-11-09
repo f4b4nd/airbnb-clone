@@ -2,9 +2,9 @@ import { Component } from '@angular/core'
 
 @Component({
     selector: 'top-navbar',
-    templateUrl: './navbar.component.html',
+    templateUrl: './top-navbar.component.html',
 })
 
-export class NavbarComponent {
+export class TopNavbarComponent {
     logo = "logo"
 }
