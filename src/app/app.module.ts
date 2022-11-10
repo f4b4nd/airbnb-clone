@@ -4,26 +4,26 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component'
 
-import { HomeComponent, ApartmentComponent } from './pages'
+import { ApartmentComponent } from './pages'
 
-import { TopNavbarComponent, CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent } from './components'
+import { TopNavbarComponent } from './components'
 
 import { appRoutingModule } from './app.routing'
+
+import { HomeModule } from './pages/home/home.module'
+
+import { ApartmentModule } from './pages/apartment/apartment.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ApartmentComponent,
     TopNavbarComponent, 
-    CardComponent,
-    CardTextComponent,
-    CardGroupComponent,
-    CardRowComponent,
   ],
   imports: [
+    HomeModule,
+    ApartmentModule,
+
     BrowserModule,
-    //AppRoutingModule,
     appRoutingModule,
     HttpClientModule,
   ],

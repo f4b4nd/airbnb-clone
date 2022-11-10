@@ -3,4 +3,10 @@
     {{apartment.description}}
     {{apartment.name}}
     {{apartment.picture_url}}
+
+    <div class="gallery" *ngFor="let pictureUrl of apartment.gallery">
+        <div class="img-container">
+            <img src={{pictureUrl}} alt={{apartment.name}}/>
+        </div>
+    </div>
 </div>
