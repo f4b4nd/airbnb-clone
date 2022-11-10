@@ -6,7 +6,7 @@ import { Observable, Subscription } from 'rxjs'
 import { environment } from '../../../environments/environment'
 
 @Component({
-    templateUrl: './apartment.component.html'
+    templateUrl: './apartment.component.html',
 })
 
 export class ApartmentComponent {

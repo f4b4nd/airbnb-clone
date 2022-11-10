@@ -1,12 +1,34 @@
 <div class="apartment"> 
-    <h1> Apartment </h1>
-    {{apartment.description}}
-    {{apartment.name}}
-    {{apartment.picture_url}}
 
-    <div class="gallery" *ngFor="let pictureUrl of apartment.gallery">
-        <div class="img-container">
-            <img src={{pictureUrl}} alt={{apartment.name}}/>
+    <div class="container mx-auto">
+
+        <div class="row">
+            <h1 class="title"> {{apartment.name}}</h1>
         </div>
+
+        <div class="row flex justify-between">
+            <div class="col flex gap-x-[1em]">
+                <span class="ratings"> {{apartment.review_scores_accuracy}}</span>
+                <span class="comments"> {{apartment.number_of_reviews}} comments</span>
+                <span class="is-superhost"> {{apartment.host_is_superhost}}</span>
+                <span class="location"> {{apartment.neighbourhood}}</span>
+            </div>
+            <div class="col flex gap-x-[1em]">
+                <span class="share">Partager</span>
+                <span class="save">Enregistrer</span>
+            </div>
+        </div>
+
+        <div class="gallery grid grid-cols-[2fr_1fr_1fr] grid-rows-[repeat(2,_200px)] gap-2">
+            <div class="img-container first:row-span-full h-full w-full" *ngFor="let pictureUrl of apartment.gallery | slice:0:5">
+                <img class="h-full w-full object-cover" src={{pictureUrl}} alt={{apartment.name}}/>
+            </div>
+        </div>
+
+        <div class="row">
+            {{apartment.description}}
+        </div>
+
     </div>
+
 </div>

@@ -4,8 +4,6 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component'
 
-import { ApartmentComponent } from './pages'
-
 import { TopNavbarComponent } from './components'
 
 import { appRoutingModule } from './app.routing'
