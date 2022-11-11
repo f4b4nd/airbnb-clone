@@ -1,7 +1,8 @@
 <div class="apartment"> 
 
     <gallery-full 
-        *ngIf="displayFullGallery" 
+        *ngIf="displayFullGallery"
+        [gallery]="apartment.gallery"
         (hideFullGalleryEvent)="unsetDisplayFullGallery()"
     > 
     </gallery-full>

@@ -11,11 +11,12 @@ import { environment } from '../../../environments/environment'
 
 export class ApartmentComponent {
 
-    public displayFullGallery: boolean = false
     public apartmentID!: string
     public apartment!: any
     private subscription!: Subscription
+
     private _jsonURL = `${environment.apiUrl}/apartments`
+    public displayFullGallery: boolean = false
 
     @Input() setDisplayFullGallery () {
         this.displayFullGallery = true
@@ -25,24 +26,22 @@ export class ApartmentComponent {
         this.displayFullGallery = false
     }
 
+    public getApartment(): Observable<any> {
+        return this.http.get(this._jsonURL)
+    }
+
     constructor(private route: ActivatedRoute, private http: HttpClient) {
 
         this.getApartment().subscribe((data: any[]) => {
             this.apartment = data.find(item => `${item.id}` === this.apartmentID)
-            console.log(this.apartment)
         })
 
-    }
-
-    public getApartment(): Observable<any> {
-        return this.http.get(this._jsonURL)
     }
 
     ngOnInit() {
 
         this.subscription = this.route.params.subscribe(params => {
             this.apartmentID = params['id']
-            console.log(this.apartmentID, params)
         })
 
     }
