@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { HttpClient } from '@angular/common/http'
 import { Observable, Subscription } from 'rxjs'
@@ -11,10 +11,19 @@ import { environment } from '../../../environments/environment'
 
 export class ApartmentComponent {
 
+    public displayFullGallery: boolean = false
     public apartmentID!: string
     public apartment!: any
     private subscription!: Subscription
     private _jsonURL = `${environment.apiUrl}/apartments`
+
+    @Input() setDisplayFullGallery () {
+        this.displayFullGallery = true
+    }
+
+    @Input() unsetDisplayFullGallery () {
+        this.displayFullGallery = false
+    }
 
     constructor(private route: ActivatedRoute, private http: HttpClient) {
 

@@ -6,9 +6,13 @@ import { appRoutingModule } from '../../app.routing'
 
 import { ApartmentComponent } from './apartment.component'
 
+import { GalleryPreviewComponent, GalleryFullComponent } from 'src/app/components'
+
 @NgModule({
     declarations: [
-        ApartmentComponent
+        ApartmentComponent,
+        GalleryPreviewComponent,
+        GalleryFullComponent
       ],
       imports: [
         BrowserModule,

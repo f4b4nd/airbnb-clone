@@ -1,6 +1,12 @@
 <div class="apartment"> 
 
-    <div class="container mx-auto">
+    <gallery-full 
+        *ngIf="displayFullGallery" 
+        (hideFullGalleryEvent)="unsetDisplayFullGallery()"
+    > 
+    </gallery-full>
+    
+    <div class="container max-w-[1120px] mx-auto">
 
         <div class="row">
             <h1 class="title"> {{apartment.name}}</h1>
@@ -19,11 +25,12 @@
             </div>
         </div>
 
-        <div class="gallery grid grid-cols-[2fr_1fr_1fr] grid-rows-[repeat(2,_200px)] gap-2">
-            <div class="img-container first:row-span-full h-full w-full" *ngFor="let pictureUrl of apartment.gallery | slice:0:5">
-                <img class="h-full w-full object-cover" src={{pictureUrl}} alt={{apartment.name}}/>
-            </div>
-        </div>
+        <gallery-preview 
+            [gallery]="apartment.gallery" 
+            [alt]="apartment.name" 
+            (displayFullGalleryEvent)="setDisplayFullGallery()"
+            >
+        </gallery-preview>
 
         <div class="row">
             {{apartment.description}}
