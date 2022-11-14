@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component'
 
-import { TopNavbarComponent } from './components'
+import { TopNavbarComponent, TopNavbarSearchComponent } from './components'
 
 import { appRoutingModule } from './app.routing'
 
@@ -16,6 +16,7 @@ import { ApartmentModule } from './pages/apartment/apartment.module'
   declarations: [
     AppComponent,
     TopNavbarComponent, 
+    TopNavbarSearchComponent,
   ],
   imports: [
     HomeModule,

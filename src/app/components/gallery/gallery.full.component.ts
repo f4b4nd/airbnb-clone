@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 @Component({
     selector: 'gallery-full',
     template: `
-        <div class="gallery-full-container bg-white absolute inset-0">
+        <div class="gallery-full-container absolute inset-0 bg-white z-[2]">
 
             <div class="container max-w-[1120px] mx-auto">
 
@@ -27,12 +27,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 
             </div>
 
-
         </div>`,
-    styles: [
-        ".gallery-full-container { z-index: 1 }",
-        ".btn-close {color: black;}"
-    ]
 })
 
 export class GalleryFullComponent {

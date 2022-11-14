@@ -1,9 +1,7 @@
 <div class="home container mx-auto"> 
 
-    <h1> Home </h1>
-
     <card-group 
-        class="grid grid-cols-minmax-350px gap-[1em]"
+        class="grid grid-cols-minmax-350px auto-rows-[400px] gap-[1em]"
         [items]="apartments"
     >
 
@@ -13,7 +11,7 @@
         >
 
             <card
-                class="card h-[400px] flex flex-col"
+                class="card h-full flex flex-col"
                 [title]="apartment.name" 
                 [src]="apartment.picture_url"
             > 
