@@ -20,7 +20,23 @@ import { Component, Input } from '@angular/core'
 
                 <top-navbar-search> </top-navbar-search>
 
-                <div class="profile"></div>
+                <div class="col flex items-center gap-4">
+
+                    <div class="host"> 
+                        <a routerLink="#"> 
+                            <button class="text-sm"> Devenez hôte </button>
+                        </a>
+                    </div>
+
+                    <div class="language">
+                        <button class="flex items-center"> 
+                            <img class="w-[15px]"src={{planetImgSrc}} alt="language"/>
+                        </button>
+                    </div>
+
+                    <top-navbar-profile> </top-navbar-profile>
+
+                </div>
 
             </div>
 
@@ -32,5 +48,6 @@ import { Component, Input } from '@angular/core'
 
 export class TopNavbarComponent {
     logoSrc = "/assets/logos/airbnb_logo.png"
+    planetImgSrc = "/assets/icons/planet.svg"
     @Input() containerWidth = ""
 }
