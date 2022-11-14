@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
     template: `
         <div class="gallery-full-container absolute inset-0 bg-white z-[2]">
 
-            <div class="container max-w-[1120px] mx-auto">
+            <div class="container container-apartment mx-auto">
 
                 <div class="row flex justify-end py-4">
                     <button class="btn btn-close" (click)="hideFullGallery()"> X </button>

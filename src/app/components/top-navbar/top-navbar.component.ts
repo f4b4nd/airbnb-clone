@@ -1,11 +1,14 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
     selector: 'top-navbar',
     template: `
-        <nav class="top-navbar sticky top-0 z-[2] bg-white">
+        <nav class="top-navbar sticky top-0 z-[2] bg-white ">
 
-            <div class="container mx-auto flex justify-between items-center py-[1em]">
+            <div 
+                class="container flex justify-between items-center py-[1em]"
+                [ngClass]="containerWidth"
+            >
                 
                 <div class="logo">
                     <a class="nav-item nav-link" routerLink="/"> 
@@ -29,4 +32,5 @@ import { Component } from '@angular/core'
 
 export class TopNavbarComponent {
     logoSrc = "/assets/logos/airbnb_logo.png"
+    @Input() containerWidth = ""
 }

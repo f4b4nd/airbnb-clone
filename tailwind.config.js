@@ -4,9 +4,12 @@ module.exports = {
         "./src/**/*.{html,ts}",
     ],
     theme: {       
-        extend: {
+        extend: {       
+            container: {
+                center: true,
+            },     
             gridTemplateColumns: {
-                'minmax-350px': "repeat(auto-fill, minmax(350px, 1fr))",
+                'auto-270px': "repeat(auto-fill, minmax(270px, 1fr))",
             },
             colors: {
                 'crimson': '#FF385C',

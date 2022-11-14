@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 @Component({
     selector: 'top-navbar-search',
     template: `
-        <div class="search  flex items-center px-3 py-2 border rounded-[50px] gap-4 text-sm">
+        <div class="search flex items-center px-3 py-2 border rounded-[50px] gap-4 text-sm">
 
             <div class="search__location px-2 border-r">
                 <button class="font-medium"> N'importe où </button>

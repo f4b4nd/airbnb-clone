@@ -4,20 +4,24 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { appRoutingModule } from '../../app.routing'
 
+import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module'
+
 import { ApartmentComponent } from './apartment.component'
 
-import { GalleryPreviewComponent, GalleryFullComponent } from 'src/app/components'
+import { GalleryPreviewComponent,  GalleryFullComponent } from 'src/app/components'
+
 
 @NgModule({
     declarations: [
         ApartmentComponent,
         GalleryPreviewComponent,
-        GalleryFullComponent
+        GalleryFullComponent,
       ],
       imports: [
         BrowserModule,
         HttpClientModule,
         appRoutingModule,
+        TopNavbarModule,
       ],
       providers: [],
       
