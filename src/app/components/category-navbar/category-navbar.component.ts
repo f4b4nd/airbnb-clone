@@ -7,9 +7,28 @@ import { environment } from '../../../environments/environment'
 @Component({
     selector: 'category-navbar',
     template: `
-        <div class="">
+        <div class="category-navbar overflow-x-auto px-8 py-4">
 
+            <div class="navbar__wrapper flex items-center gap-x-8"> 
 
+                <div
+                    *ngFor="let category of categories" 
+                    class="category-nav-item"
+                >
+
+                    <button class="item__wrapper flex flex-col items-center gap-y-2">
+
+                        <img 
+                            class="w-[24px] h-[24px] contrast-[0.3]" 
+                            [src]="'/assets/icons/category/' + category.file" 
+                        />
+
+                        <div class=" w-[max-content] text-gray-500 text-[12px]"> {{category.label | capitalize}} </div>
+                    </button>
+
+                </div>
+
+            </div>
         </div>
     `,
 })
@@ -29,8 +48,8 @@ export class CategoryNavbarComponent implements OnInit {
     
     }
 
-    public getCategories(): Observable<any> {
-        return this.http.get(this._jsonURL)
+    public getCategories() {
+        return this.http.get<TCategory[]>(this._jsonURL)
     }
     
     ngOnInit() {}

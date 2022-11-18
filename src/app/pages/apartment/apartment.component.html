@@ -1,6 +1,6 @@
 <top-navbar [containerWidth]="'container-lg'"></top-navbar>
 
-<div class="apartment"> 
+<div class="apartment" *ngIf="apartment"> 
 
     <gallery-full 
         *ngIf="displayFullGallery"

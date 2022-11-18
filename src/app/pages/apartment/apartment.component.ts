@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment'
 export class ApartmentComponent {
 
     public apartmentID!: string
-    public apartment!: TApartment
+    public apartment!: TApartment | undefined
     private subscription!: Subscription
 
     private _jsonURL = `${environment.apiUrl}/apartments`
@@ -26,13 +26,13 @@ export class ApartmentComponent {
         this.displayFullGallery = false
     }
 
-    public getApartment(): Observable<any> {
-        return this.http.get(this._jsonURL)
+    public getApartment() {
+        return this.http.get<TApartment[]>(this._jsonURL)
     }
 
     constructor(private route: ActivatedRoute, private http: HttpClient) {
 
-        this.getApartment().subscribe((data: any[]) => {
+        this.getApartment().subscribe(data => {
             this.apartment = data.find(item => `${item.id}` === this.apartmentID)
         })
 

@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
     
     }
 
-    public getApartments(): Observable<any> {
-        return this.http.get(this._jsonURL)
+    public getApartments() {
+        return this.http.get<TApartment[]>(this._jsonURL)
     }
 
     ngOnInit() {}
