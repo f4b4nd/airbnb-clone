@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core'
 @Component({
     selector: 'top-navbar',
     template: `
-        <nav class="top-navbar sticky top-0 z-[2] bg-white ">
+        <nav class="top-navbar">
 
             <div 
                 class="container flex justify-between items-center py-[1em]"

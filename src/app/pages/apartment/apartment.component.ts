@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { HttpClient } from '@angular/common/http'
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 import { environment } from '../../../environments/environment'
 

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
 
 import { environment } from '../../../environments/environment'
 
 @Component({
     selector: 'category-navbar',
     template: `
-        <div class="category-navbar overflow-x-auto px-8 py-4">
+        <div class="category-navbar hidden-scrollbar overflow-x-scroll bg-white py-4">
 
             <div class="navbar__wrapper flex items-center gap-x-8"> 
 
@@ -29,6 +28,7 @@ import { environment } from '../../../environments/environment'
                 </div>
 
             </div>
+
         </div>
     `,
 })

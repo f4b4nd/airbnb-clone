@@ -6,11 +6,10 @@ import { appRoutingModule } from '../../app.routing'
 
 import { HomeComponent } from './home.component'
 
-import { CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent, CategoryNavbarComponent } from 'src/app/components'
+import { CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent, CategoryNavbarComponent, FilterModalButtonComponent } from 'src/app/components'
 import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module'
 
-import { ToStringPipe } from '../../toString.pipe'
-import { CapitalizePipe } from '../../capitalize.pipe'
+import { CapitalizePipe, ToStringPipe } from '../../pipes'
 
 @NgModule({
     declarations: [
@@ -20,6 +19,7 @@ import { CapitalizePipe } from '../../capitalize.pipe'
         CardGroupComponent,
         CardRowComponent,
         CategoryNavbarComponent,
+        FilterModalButtonComponent,
         ToStringPipe,
         CapitalizePipe,
       ],

@@ -1,7 +1,13 @@
-<top-navbar containerWidth="container-xl"></top-navbar>
+<div class="navbar-sticky sticky top-0 z-[2] bg-white">
+    <top-navbar containerWidth="container-xl"></top-navbar>
 
-<category-navbar></category-navbar>
-<div class="home container container-xl"> 
+    <div class="container container-xl row flex items-center justify-between gap-8">
+        <category-navbar class="hidden-scrollbar overflow-x-scroll"></category-navbar>
+        <filter-modal-button> </filter-modal-button>
+    </div>
+
+</div>
+<div class="home container container-xl py-8"> 
 
     <card-group 
         class="grid grid-cols-auto-270px auto-rows-[400px] gap-4"
