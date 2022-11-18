@@ -10,9 +10,10 @@ import { environment } from '../../../environments/environment'
 
 export class HomeComponent implements OnInit {
 
-    public apartments!: any[]
+    public apartments!: TApartment[]
 
     private _jsonURL = `${environment.apiUrl}/apartments`
+
     constructor(private http: HttpClient) {
 
         this.getApartments().subscribe(data => {

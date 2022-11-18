@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment'
 export class ApartmentComponent {
 
     public apartmentID!: string
-    public apartment!: any
+    public apartment!: TApartment
     private subscription!: Subscription
 
     private _jsonURL = `${environment.apiUrl}/apartments`

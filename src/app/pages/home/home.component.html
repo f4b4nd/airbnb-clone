@@ -20,7 +20,7 @@
 
                 <card-row class="card__row flex justify-between"> 
                     <card-text class="card__title" [text]="apartment.neighbourhood"></card-text>
-                    <card-text class="card__text" [text]="apartment.review_scores_accuracy"></card-text>
+                    <card-text class="card__text" [text]="apartment.review_scores_accuracy | toString "></card-text>
                 </card-row>
 
                 <card-text class="card__text" [text]="apartment.name"></card-text>

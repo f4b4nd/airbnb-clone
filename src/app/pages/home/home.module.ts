@@ -8,6 +8,7 @@ import { HomeComponent } from './home.component'
 
 import { CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent } from 'src/app/components'
 import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module';
+import { ToStringPipe } from '../../toString.pipe';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module';
         CardTextComponent,
         CardGroupComponent,
         CardRowComponent,
+        ToStringPipe,
       ],
       imports: [
         BrowserModule,
