@@ -47,7 +47,7 @@ import { Component, Input } from '@angular/core'
 })
 
 export class TopNavbarComponent {
-    logoSrc = "/assets/logos/airbnb_logo.png"
-    planetImgSrc = "/assets/icons/planet.svg"
+    logoSrc = "./assets/logos/airbnb_logo.png"
+    planetImgSrc = "./assets/icons/planet.svg"
     @Input() containerWidth = ""
 }

@@ -28,5 +28,5 @@ import { Component } from '@angular/core'
 })
 
 export class TopNavbarProfileComponent {
-    profileLogoSrc = "/assets/icons/profile.svg"
+    profileLogoSrc = "./assets/icons/profile.svg"
 }

@@ -34,5 +34,5 @@ import { Component } from '@angular/core'
 })
 
 export class TopNavbarSearchComponent {
-    submitLogoSrc = "/assets/icons/loupe.svg"
+    submitLogoSrc = "./assets/icons/loupe.svg"
 }
