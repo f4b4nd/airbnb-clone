@@ -19,7 +19,7 @@ import { environment } from '../../../environments/environment'
 
                         <img 
                             class="w-[24px] h-[24px] contrast-[0.3]" 
-                            [src]="'/assets/icons/category/' + category.file" 
+                            [src]="'./assets/icons/category/' + category.file" 
                         />
 
                         <div class=" w-[max-content] text-gray-500 text-[12px]"> {{category.label | capitalize}} </div>
