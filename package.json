@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "db:dev": "json-server --watch src/assets/db.json",
+    "build:prod": "ng build --configuration production --base-href https://f4b4nd.github.io/airbnb-clone/",
     "test": "ng test"
   },
   "private": true,

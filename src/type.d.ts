@@ -19,3 +19,8 @@ type TApartment = {
     host_is_superhost: number,
     number_of_reviews: number,
 }
+
+type APIResponse = {
+    apartments: TApartment[],
+    categories: TCategory[],
+}

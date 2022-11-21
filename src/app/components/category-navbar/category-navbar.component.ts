@@ -37,19 +37,18 @@ export class CategoryNavbarComponent implements OnInit {
 
     categories: TCategory[] = []
 
-    private _jsonURL = `${environment.apiUrl}/categories`
+    private _apiURL = environment.apiUrl
     
     constructor(private http: HttpClient) {
 
         this.getCategories().subscribe(data => {
-            console.log(data)
-            this.categories = data
+            this.categories = data.categories
         })
     
     }
 
     public getCategories() {
-        return this.http.get<TCategory[]>(this._jsonURL)
+        return this.http.get<APIResponse>(this._apiURL)
     }
     
     ngOnInit() {}

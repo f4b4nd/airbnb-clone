@@ -15,7 +15,7 @@ export class ApartmentComponent {
     public apartment!: TApartment | undefined
     private subscription!: Subscription
 
-    private _jsonURL = `${environment.apiUrl}/apartments`
+    private _apiURL = environment.apiUrl
     public displayFullGallery: boolean = false
 
     @Input() setDisplayFullGallery () {
@@ -27,13 +27,13 @@ export class ApartmentComponent {
     }
 
     public getApartment() {
-        return this.http.get<TApartment[]>(this._jsonURL)
+        return this.http.get<APIResponse>(this._apiURL)
     }
 
     constructor(private route: ActivatedRoute, private http: HttpClient) {
 
         this.getApartment().subscribe(data => {
-            this.apartment = data.find(item => `${item.id}` === this.apartmentID)
+            this.apartment = data.apartments.find(item => `${item.id}` === this.apartmentID)
         })
 
     }

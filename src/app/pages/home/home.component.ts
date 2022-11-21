@@ -11,19 +11,18 @@ export class HomeComponent implements OnInit {
 
     public apartments!: TApartment[]
 
-    private _jsonURL = `${environment.apiUrl}/apartments`
+    private _apiURL = environment.apiUrl
 
     constructor(private http: HttpClient) {
 
         this.getApartments().subscribe(data => {
-            console.log(data)
-            this.apartments = data
+            this.apartments = data.apartments
         })
     
     }
 
     public getApartments() {
-        return this.http.get<TApartment[]>(this._jsonURL)
+        return this.http.get<APIResponse>(this._apiURL)
     }
 
     ngOnInit() {}
