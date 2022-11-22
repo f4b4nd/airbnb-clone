@@ -9,7 +9,7 @@ import { HomeComponent } from './home.component'
 import { CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent, CategoryNavbarComponent, FilterModalButtonComponent } from 'src/app/components'
 import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module'
 
-import { CapitalizePipe, ToStringPipe } from '../../pipes'
+import { CapitalizePipe, ToStringPipe, ToLocaleCurrencyPipe } from '../../pipes'
 
 @NgModule({
     declarations: [
@@ -22,6 +22,7 @@ import { CapitalizePipe, ToStringPipe } from '../../pipes'
         FilterModalButtonComponent,
         ToStringPipe,
         CapitalizePipe,
+        ToLocaleCurrencyPipe,
       ],
       imports: [
         BrowserModule,

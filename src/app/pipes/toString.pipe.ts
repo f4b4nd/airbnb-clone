@@ -4,6 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core'
 
 export class ToStringPipe implements PipeTransform {
     transform(value: number): string {
-        return value.toString()
+        return value.toLocaleString()
     }
 }

@@ -18,6 +18,8 @@ type TApartment = {
     review_scores_accuracy: number,
     host_is_superhost: number,
     number_of_reviews: number,
+    host_location: string,
+    property_type: string,
 }
 
 type APIResponse = {

@@ -24,18 +24,41 @@ To launch this project, just run the command :
 ng serve
 ```
 
-## 2. TODO :
+## 2. Hosting
 
-### 2.1 Interface
+This application is hosted at URL : (https://f4b4nd.github.io/airbnb-clone)[https://f4b4nd.github.io/airbnb-clone/]
+
+This project is deployed on github pages, by using : angular-cli-ghpages
+
+Github-page triggers everytime build production folder (located at /docs) is updated.
+
+To create build production folder :
+```
+npm run build:prod
+```
+
+
+cf links : 
+https://medium.com/swlh/how-to-deploy-an-angular-app-to-github-pages-without-using-any-libraries-step-by-step-guide-cfe96fb0c879
+
+https://www.c-sharpcorner.com/blogs/a-guide-on-how-to-deploy-angular-applications-to-github-pages#:~:text=To%20deploy%20an%20Angular%20application%20to%20GitHub%20Pages%20you%20have,be%20deployed%20using%20GitHub%20Pages.
+
+
+https://www.syncfusion.com/blogs/post/easy-steps-to-host-an-angular-app-in-github-pages.aspx
+
+
+## 3. TODO :
+
+### 3.1 Interface
 - [ ] Système de routing
 
-#### 2.1.1 Navbar
+#### 3.1.1 Navbar
 - [ ] dates filter
 - [ ] filter by category (navbar)
 - [ ] filter modal : by price, number of rooms, type, equipements
 
 
-#### 2.1.2 Body
+#### 3.1.2 Body
 - [ ] implement search Engine
 - [ ] create cards
 - [ ] implement like system
@@ -43,14 +66,13 @@ ng serve
 - [ ] implement filters
 - [ ] implement google maps
 
-### 2.2 API
+### 3.2 API
 - [ ] create API  
 - [ ] Translation system ?
 
-### 2.3 Limits
+### 3.3 Limits
 
 - [ ] first, we won't implement an authentification system, we'll just use a basic profile with "liked houses"
-
 
 # Api
 This project uses json-server to mock API.

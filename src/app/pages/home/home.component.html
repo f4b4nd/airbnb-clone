@@ -25,20 +25,37 @@
                 [src]="apartment.picture_url"
             > 
 
-                <card-row class="card__row flex justify-between"> 
-                    <card-text class="card__title" [text]="apartment.neighbourhood"></card-text>
-                    <card-text class="card__text" [text]="apartment.review_scores_accuracy | toString "></card-text>
-                </card-row>
+                <div class="card__body flex flex-col py-2" >
+                    <card-row class="card__row flex justify-between gap-2"> 
+                        <card-text 
+                            class="card__title font-medium text-ellipsis overflow-hidden whitespace-nowrap" 
+                            [text]="apartment.neighbourhood">
+                        </card-text>
 
-                <card-text class="card__text" [text]="apartment.name"></card-text>
+                        <div class="card__ratings flex items-center gap-1">
+                            <img src="./assets/icons/star.svg" alt="star" class="w-[12px] h-[12px]"/>
+                            <card-text class="card__text" [text]="apartment.review_scores_accuracy | toString"></card-text>
+                        </div>
 
-                <card-row class="card__row">
-                    <card-text class="card__text" [text]="apartment.host_since"></card-text>
-                    <card-text class="card__text" [text]="apartment.host_name"></card-text>
-                </card-row>
+                    </card-row>
 
-                <card-text class="card__text" [text]="apartment.price"></card-text>
+                    <card-text 
+                        class="card__text text-zinc-500 text-ellipsis overflow-hidden whitespace-nowrap" 
+                        [text]="apartment.name">
+                    </card-text>
 
+                    <card-row class="card__row text-ellipsis overflow-hidden whitespace-nowrap">
+                        <card-text class="card__text text-zinc-500" [text]="apartment.property_type"></card-text>
+                        <card-text class="card__text text-zinc-500" text="·"></card-text>
+                        <card-text class="card__text text-zinc-500" [text]="apartment.host_name"></card-text>
+                    </card-row>
+
+                    <card-row class="card__row mt-1 flex gap-1">
+                        <card-text class="card__text font-medium" [text]="apartment.price | toLocaleCurrency"></card-text>
+                        <card-text class="card__text" text="par nuit"></card-text>
+                    </card-row>
+                    
+                </div>
             </card>
 
         </a>
