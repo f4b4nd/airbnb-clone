@@ -22,7 +22,7 @@ import { environment } from '../../../environments/environment'
                             [src]="'./assets/icons/category/' + category.file" 
                         />
 
-                        <div class=" w-[max-content] text-gray-500 text-[12px]"> {{category.label | capitalize}} </div>
+                        <div class=" w-[max-content] text-gray-500 text-[12px]"> {{category.label | capitalize }} </div>
                     </button>
 
                 </div>

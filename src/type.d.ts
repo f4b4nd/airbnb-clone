@@ -20,6 +20,12 @@ type TApartment = {
     number_of_reviews: number,
     host_location: string,
     property_type: string,
+    host_picture_url: string,
+    host_thumbnail_url: string,
+    accommodates: number,
+    beds: number,
+    bedrooms: number,
+    bathrooms: string,
 }
 
 type APIResponse = {

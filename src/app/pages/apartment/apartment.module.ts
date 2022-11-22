@@ -9,6 +9,7 @@ import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module'
 import { ApartmentComponent } from './apartment.component'
 
 import { GalleryPreviewComponent,  GalleryFullComponent } from 'src/app/components'
+import { ToLocaleDatePipe } from '../../pipes/toLocaleDate.pipe'
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { GalleryPreviewComponent,  GalleryFullComponent } from 'src/app/componen
         ApartmentComponent,
         GalleryPreviewComponent,
         GalleryFullComponent,
+        ToLocaleDatePipe
       ],
       imports: [
         BrowserModule,

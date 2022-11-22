@@ -1,13 +1,13 @@
 <top-navbar containerWidth="container-lg"></top-navbar>
 
-<div class="apartment" *ngIf="apartment"> 
+<gallery-full 
+    *ngIf="displayFullGallery && apartment"
+    [gallery]="apartment.gallery"
+    (hideFullGalleryEvent)="unsetDisplayFullGallery()"
+> 
+</gallery-full>
 
-    <gallery-full 
-        *ngIf="displayFullGallery"
-        [gallery]="apartment.gallery"
-        (hideFullGalleryEvent)="unsetDisplayFullGallery()"
-    > 
-    </gallery-full>
+<div class="apartment" *ngIf="apartment"> 
     
     <div class="container container-lg">
 
@@ -34,6 +34,43 @@
             (displayFullGalleryEvent)="setDisplayFullGallery()"
         >
         </gallery-preview>
+
+        <div class="col">
+
+            <div class="row flex">
+                
+                <div class="col">
+                    <div class="row">
+                        <span class="text font-medium"> {{apartment.property_type}}</span>
+                        <span class="text font-medium"> · </span>
+                        <span class="text font-medium"> Chez {{apartment.host_name}}</span>
+                    </div>
+
+                    <div class="row">
+                        <span class="text font-medium"> {{apartment.accommodates}} voyageurs </span>
+                        <span class="text font-medium"> {{apartment.bedrooms}} chambres privées </span>
+                        <span class="text font-medium"> {{apartment.beds}} lits </span>
+                        <span class="text font-medium"> {{apartment.bathrooms}}  salle de bain privée </span>            
+                    </div>
+                </div>
+
+                <div class="col">
+                    <img 
+                        class="w-[56px] rounded-[50px]"
+                        [src]="apartment.host_picture_url" 
+                        [alt]="apartment.host_location"
+                    >
+                </div>
+
+            </div>
+
+            <div class="cancellation flex">
+                <img src="./assets/icons/calendar.svg" class="w-[24px]" alt="calendar" />
+                <span> Annulation gratuite avant le {{ addDays(today, 15) | toLocaleDate }}</span>
+            </div>
+
+
+        </div>
 
         <div class="row">
             {{apartment.description}}

@@ -14,6 +14,7 @@ export class ApartmentComponent {
     public apartmentID!: string
     public apartment!: TApartment | undefined
     private subscription!: Subscription
+    public today: Date = new Date()
 
     private _apiURL = environment.apiUrl
     public displayFullGallery: boolean = false
@@ -28,6 +29,12 @@ export class ApartmentComponent {
 
     public getApartment() {
         return this.http.get<APIResponse>(this._apiURL)
+    }
+
+    public addDays(date: Date, days: number) {
+        const result = new Date()
+        result.setDate(date.getDate() + days)
+        return result
     }
 
     constructor(private route: ActivatedRoute, private http: HttpClient) {
