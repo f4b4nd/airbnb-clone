@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Subscription } from 'rxjs'
 
 import { environment } from '../../../environments/environment'
@@ -28,7 +28,10 @@ export class ApartmentComponent {
     }
 
     public getApartment() {
-        return this.http.get<APIResponse>(this._apiURL)
+        const headers = new HttpHeaders()
+            .set('Content-Type', 'application/json')
+            .set('Access-Control-Allow-Origin', '*')
+        return this.http.get<APIResponse>(this._apiURL, {'headers': headers})
     }
 
     public addDays(date: Date, days: number) {

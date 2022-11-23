@@ -11,20 +11,32 @@
     
     <div class="container container-lg">
 
-        <div class="row">
-            <h1 class="title"> {{apartment.name}}</h1>
+        <div class="row mt-4">
+            <h1 class="title text-2xl font-bold"> {{apartment.name}}</h1>
         </div>
 
-        <div class="row flex justify-between">
+        <div class="row flex justify-between my-4">
             <div class="col flex gap-x-[1em]">
-                <span class="ratings"> {{apartment.review_scores_accuracy}}</span>
-                <span class="comments"> {{apartment.number_of_reviews}} comments</span>
-                <span class="is-superhost"> {{apartment.host_is_superhost}}</span>
-                <span class="location"> {{apartment.neighbourhood}}</span>
+                <span class="ratings flex gap-1"> 
+                    <img src="./assets/icons/star.svg" class="w-[14px]"/>
+                    {{apartment.review_scores_accuracy}}
+                </span>
+                <span class="comments"> 
+                    <button class="underline font-medium"> {{apartment.number_of_reviews}} commentaires</button>
+                </span>
+                <span class="location">                     
+                    <button class="underline font-medium"> {{apartment.neighbourhood}}</button>
+                </span>
             </div>
-            <div class="col flex gap-x-[1em]">
-                <span class="share">Partager</span>
-                <span class="save">Enregistrer</span>
+            <div class="col flex gap-x-4">
+                <span class="share  flex gap-2"> 
+                    <img src="./assets/icons/share.svg" class="w-[16px]" alt="share"/> 
+                    <button class="underline"> Partager </button>
+                </span>
+                <span class="save underline flex gap-2"> 
+                    <img src="./assets/icons/heart.svg" class="w-[16px]" alt="heart"/>
+                    <button class="underline"> Enregistrer </button>
+                </span>
             </div>
         </div>
 
@@ -43,16 +55,15 @@
                     
                     <div class="col">
                         <div class="row text-xl font-medium">
-                            <span class="text"> {{apartment.property_type}}</span>
-                            <span class="text"> · </span>
+                            <span class="text after:content-['_·']"> {{apartment.property_type}}</span>
                             <span class="text"> Chez {{apartment.host_name}}</span>
                         </div>
 
                         <div class="row font-light">
-                            <span class="text"> {{apartment.accommodates}} voyageurs </span>
-                            <span class="text"> {{apartment.bedrooms}} chambres privées </span>
-                            <span class="text"> {{apartment.beds}} lits </span>
-                            <span class="text"> {{apartment.bathrooms}}  salle de bain privée </span>            
+                            <span class="text after:content-['_·']"> {{apartment.accommodates}} voyageurs </span>
+                            <span class="text after:content-['_·']"> {{apartment.bedrooms}} chambres privées </span>
+                            <span class="text after:content-['_·']"> {{apartment.beds}} lits </span>
+                            <span class="text"> {{apartment.bathrooms}} salle de bain privée </span>            
                         </div>
                     </div>
 
@@ -80,8 +91,10 @@
                     <button class="underline font-medium"> En savoir plus </button>
                 </div>
 
-
-                <div class="description font-semilight py-4 border-t" [innerHTML]="apartment.description"></div>
+                <div 
+                    class="description font-semilight py-4 border-t" 
+                    [innerHTML]="apartment.description">
+                </div>
 
             </div>
 
