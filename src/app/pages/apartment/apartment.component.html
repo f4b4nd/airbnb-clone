@@ -64,17 +64,27 @@
 
             </div>
 
-            <div class="cancellation flex">
+            <div class="cancellation flex py-4 gap-2 border-t-2">
                 <img src="./assets/icons/calendar.svg" class="w-[24px]" alt="calendar" />
                 <span> Annulation gratuite avant le {{ addDays(today, 15) | toLocaleDate }}</span>
             </div>
 
 
+            <div class="aircover flex flex-col items-start gap-4 py-4 border-t-2">
+                <img src="./assets/logos/aircover_logo.png" class="h-[26px]" alt="aircover">
+                <div class="text">
+                    Chaque réservation comprend une protection gratuite en cas d'annulation par l'hôte, d'inexactitudes dans la description du logement, ainsi que d'autres problèmes comme les difficultés d'accès au logement.
+                </div>
+                <button class="underline font-medium"> En savoir plus </button>
+            </div>
+
+
+            <div class="description py-4 border-t-2">
+                {{apartment.description}}
+            </div>
+
         </div>
 
-        <div class="row">
-            {{apartment.description}}
-        </div>
 
     </div>
 

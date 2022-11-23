@@ -26,7 +26,7 @@ ng serve
 
 ## 2. Hosting
 
-This application is hosted at URL : (https://f4b4nd.github.io/airbnb-clone)[https://f4b4nd.github.io/airbnb-clone/]
+This application is hosted at URL : [https://f4b4nd.github.io/airbnb-clone/](https://f4b4nd.github.io/airbnb-clone/)
 
 This project is deployed on github pages, by using : angular-cli-ghpages
 
