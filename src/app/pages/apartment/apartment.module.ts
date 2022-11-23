@@ -4,12 +4,13 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { appRoutingModule } from '../../app.routing'
 
-import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module'
+import { ApartmentComponent } from './'
 
-import { ApartmentComponent } from './apartment.component'
+import { GalleryPreviewComponent, GalleryFullComponent, BookingFormComponent } from '../../components'
 
-import { GalleryPreviewComponent,  GalleryFullComponent } from 'src/app/components'
-import { ToLocaleDatePipe } from '../../pipes/toLocaleDate.pipe'
+import { TopNavbarModule } from '../../components/top-navbar'
+
+import { ToLocaleDatePipe , ToLocaleCurrencyModule} from '../../pipes'
 
 
 @NgModule({
@@ -17,13 +18,15 @@ import { ToLocaleDatePipe } from '../../pipes/toLocaleDate.pipe'
         ApartmentComponent,
         GalleryPreviewComponent,
         GalleryFullComponent,
-        ToLocaleDatePipe
+        BookingFormComponent,
+        ToLocaleDatePipe,        
       ],
       imports: [
         BrowserModule,
         HttpClientModule,
         appRoutingModule,
         TopNavbarModule,
+        ToLocaleCurrencyModule,
       ],
       providers: [],
       

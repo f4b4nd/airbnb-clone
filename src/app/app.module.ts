@@ -6,9 +6,9 @@ import { AppComponent } from './app.component'
 
 import { appRoutingModule } from './app.routing'
 
-import { HomeModule } from './pages/home/home.module'
+import { HomeModule } from './pages/home'
 
-import { ApartmentModule } from './pages/apartment/apartment.module'
+import { ApartmentModule } from './pages/apartment'
 
 @NgModule({
   declarations: [

@@ -5,3 +5,5 @@ export { ToStringPipe } from "./toString.pipe"
 export { ToLocaleCurrencyPipe } from "./toLocaleCurrency.pipe"
 
 export { ToLocaleDatePipe } from "./toLocaleDate.pipe"
+
+export { ToLocaleCurrencyModule } from './toLocaleCurrency.module'

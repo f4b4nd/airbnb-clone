@@ -35,56 +35,61 @@
         >
         </gallery-preview>
 
-        <div class="col">
+        <div class="row flex gap-8 mt-4">
 
-            <div class="row flex">
-                
-                <div class="col">
-                    <div class="row">
-                        <span class="text font-medium"> {{apartment.property_type}}</span>
-                        <span class="text font-medium"> · </span>
-                        <span class="text font-medium"> Chez {{apartment.host_name}}</span>
+            <div class="col-left">
+
+                <div class="row flex justify-between py-4">
+                    
+                    <div class="col">
+                        <div class="row text-xl font-medium">
+                            <span class="text"> {{apartment.property_type}}</span>
+                            <span class="text"> · </span>
+                            <span class="text"> Chez {{apartment.host_name}}</span>
+                        </div>
+
+                        <div class="row font-light">
+                            <span class="text"> {{apartment.accommodates}} voyageurs </span>
+                            <span class="text"> {{apartment.bedrooms}} chambres privées </span>
+                            <span class="text"> {{apartment.beds}} lits </span>
+                            <span class="text"> {{apartment.bathrooms}}  salle de bain privée </span>            
+                        </div>
                     </div>
 
-                    <div class="row">
-                        <span class="text font-medium"> {{apartment.accommodates}} voyageurs </span>
-                        <span class="text font-medium"> {{apartment.bedrooms}} chambres privées </span>
-                        <span class="text font-medium"> {{apartment.beds}} lits </span>
-                        <span class="text font-medium"> {{apartment.bathrooms}}  salle de bain privée </span>            
+                    <div class="col">
+                        <img 
+                            class="w-[56px] rounded-[50px]"
+                            [src]="apartment.host_picture_url" 
+                            [alt]="apartment.host_location"
+                        >
                     </div>
+
                 </div>
 
-                <div class="col">
-                    <img 
-                        class="w-[56px] rounded-[50px]"
-                        [src]="apartment.host_picture_url" 
-                        [alt]="apartment.host_location"
-                    >
+                <div class="cancellation flex py-4 gap-2 border-t">
+                    <img src="./assets/icons/calendar.svg" class="w-[24px]" alt="calendar" />
+                    <span> Annulation gratuite avant le {{ addDays(today, 15) | toLocaleDate }}</span>
                 </div>
+
+
+                <div class="aircover flex flex-col items-start gap-4 py-8 border-t">
+                    <img src="./assets/logos/aircover_logo.png" class="h-[26px]" alt="aircover">
+                    <div class="text font-semilight">
+                        Chaque réservation comprend une protection gratuite en cas d'annulation par l'hôte, d'inexactitudes dans la description du logement, ainsi que d'autres problèmes comme les difficultés d'accès au logement.
+                    </div>
+                    <button class="underline font-medium"> En savoir plus </button>
+                </div>
+
+
+                <div class="description font-semilight py-4 border-t" [innerHTML]="apartment.description"></div>
 
             </div>
 
-            <div class="cancellation flex py-4 gap-2 border-t-2">
-                <img src="./assets/icons/calendar.svg" class="w-[24px]" alt="calendar" />
-                <span> Annulation gratuite avant le {{ addDays(today, 15) | toLocaleDate }}</span>
-            </div>
-
-
-            <div class="aircover flex flex-col items-start gap-4 py-4 border-t-2">
-                <img src="./assets/logos/aircover_logo.png" class="h-[26px]" alt="aircover">
-                <div class="text">
-                    Chaque réservation comprend une protection gratuite en cas d'annulation par l'hôte, d'inexactitudes dans la description du logement, ainsi que d'autres problèmes comme les difficultés d'accès au logement.
-                </div>
-                <button class="underline font-medium"> En savoir plus </button>
-            </div>
-
-
-            <div class="description py-4 border-t-2">
-                {{apartment.description}}
+            <div class="col-right min-w-[370px] py-4 ">
+                <booking-form  class="" [apartment]="apartment"></booking-form>
             </div>
 
         </div>
-
 
     </div>
 

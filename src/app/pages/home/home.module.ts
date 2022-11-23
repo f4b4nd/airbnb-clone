@@ -7,9 +7,12 @@ import { appRoutingModule } from '../../app.routing'
 import { HomeComponent } from './home.component'
 
 import { CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent, CategoryNavbarComponent, FilterModalButtonComponent } from 'src/app/components'
-import { TopNavbarModule } from '../../components/top-navbar/top-navbar.module'
 
-import { CapitalizePipe, ToStringPipe, ToLocaleCurrencyPipe } from '../../pipes'
+import { TopNavbarModule } from '../../components/top-navbar'
+
+import { CapitalizePipe, ToStringPipe } from '../../pipes'
+
+import { ToLocaleCurrencyModule } from '../../pipes'
 
 @NgModule({
     declarations: [
@@ -21,14 +24,14 @@ import { CapitalizePipe, ToStringPipe, ToLocaleCurrencyPipe } from '../../pipes'
         CategoryNavbarComponent,
         FilterModalButtonComponent,
         ToStringPipe,
-        CapitalizePipe,
-        ToLocaleCurrencyPipe,
+        CapitalizePipe,        
       ],
       imports: [
         BrowserModule,
         HttpClientModule,
         appRoutingModule,
         TopNavbarModule,
+        ToLocaleCurrencyModule,
       ],
       providers: [],
       
