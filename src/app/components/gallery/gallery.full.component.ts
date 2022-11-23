@@ -3,15 +3,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 @Component({
     selector: 'gallery-full',
     template: `
-        <div class="gallery-full-container absolute inset-0 bg-white z-[2]">
+        <div class="gallery-full-container absolute top-0 left-0 w-full bg-white z-[2]">
 
-            <div class="container container-apartment mx-auto">
+            <div class="container container-apartment py-4">
 
-                <div class="row flex justify-end py-4">
+                <div class="row flex justify-end my-4">
                     <button class="btn btn-close" (click)="hideFullGallery()"> X </button>
                 </div>
 
-                <div class="gallery grid grid-cols-[1fr_1fr] grid-rows-[repeat(auto,_190px)] gap-2 overflow-hidden">
+                <div class="gallery grid grid-cols-[1fr_1fr]  gap-2 mx-auto max-w-[800px]">
                     <div 
                         *ngFor="let pictureUrl of gallery ; let i = index"
                         class="img-container h-full w-full"

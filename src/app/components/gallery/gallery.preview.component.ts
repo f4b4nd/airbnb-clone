@@ -3,7 +3,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
 @Component({
     selector: 'gallery-preview',
     template: `
-        <div class="gallery-container relative">
+        <div 
+            class="gallery-container relative cursor-pointer"
+            (click)="displayFullGallery()"
+        >
 
             <div class="gallery grid grid-cols-[2fr_1fr_1fr] grid-rows-[repeat(2,_190px)] gap-2 rounded-lg overflow-hidden">
                 <div 
@@ -18,8 +21,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
                 </div>
             </div>
 
-            <div class="absolute right-[20px] bottom-[20px] rounded-md bg-white"> 
-                <button (click)="displayFullGallery()" class="px-2 py-1"> Afficher toutes les photos</button>
+            <div class="absolute right-[20px] bottom-[20px] rounded-md bg-white border border-black"> 
+                <button (click)="displayFullGallery()" class="flex items-center gap-2 px-4 py-1"> 
+                    <img src="./assets/icons/grid.svg" class="w-[14px]" alt="grid"/>
+                    <span class="font-medium"> Afficher toutes les photos </span>
+                </button>
             </div>
 
         </div>`,
