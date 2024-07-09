@@ -1,109 +1,116 @@
-<top-navbar containerWidth="container-lg"></top-navbar>
+<top-navbar containerWidth="container-lg" />
 
-<gallery-full 
-    *ngIf="displayFullGallery && apartment"
-    [gallery]="apartment.gallery"
-    (hideFullGalleryEvent)="unsetDisplayFullGallery()"
-> 
-</gallery-full>
 
-<div class="apartment" *ngIf="apartment"> 
-    
-    <div class="container container-lg py-4">
 
-        <div class="row mb-2">
-            <h1 class="title text-3xl font-medium"> {{apartment.name}}</h1>
-        </div>
+@if (apartment$ | async; as apartment) {
 
-        <div class="row flex justify-between mb-4">
-            <div class="col flex gap-x-[1em]">
-                <span class="ratings flex gap-1"> 
-                    <img src="./assets/icons/star.svg" class="w-[14px]"/>
-                    {{apartment.review_scores_accuracy}}
-                </span>
-                <span class="comments"> 
-                    <button class="underline font-medium"> {{apartment.number_of_reviews}} commentaires</button>
-                </span>
-                <span class="location">                     
-                    <button class="underline font-medium"> {{apartment.neighbourhood}}</button>
-                </span>
+    <gallery-full 
+        *ngIf="displayFullGallery"
+        [gallery]="apartment.gallery"
+        (hideFullGalleryEvent)="unsetDisplayFullGallery()"
+    /> 
+
+    <div class="apartment">
+        
+        <div class="container container-lg py-4">
+
+            <div class="row mb-2">
+                <h1 class="title text-3xl font-medium"> {{apartment.name}}</h1>
             </div>
-            <div class="col flex gap-x-4">
-                <span class="share  flex gap-2"> 
-                    <img src="./assets/icons/share.svg" class="w-[16px]" alt="share"/> 
-                    <button class="underline"> Partager </button>
-                </span>
-                <span class="save underline flex gap-2"> 
-                    <img src="./assets/icons/heart.svg" class="w-[16px]" alt="heart"/>
-                    <button class="underline"> Enregistrer </button>
-                </span>
+
+            <div class="row flex justify-between mb-4">
+                <div class="col flex gap-x-[1em]">
+                    <span class="ratings flex gap-1"> 
+                        <img src="./assets/icons/star.svg" class="w-[14px]"/>
+                        {{apartment.review_scores_accuracy}}
+                    </span>
+                    <span class="comments"> 
+                        <button class="underline font-medium"> {{apartment.number_of_reviews}} commentaires</button>
+                    </span>
+                    <span class="location">                     
+                        <button class="underline font-medium"> {{apartment.neighbourhood}}</button>
+                    </span>
+                </div>
+                <div class="col flex gap-x-4">
+                    <span class="share  flex gap-2"> 
+                        <img src="./assets/icons/share.svg" class="w-[16px]" alt="share"/> 
+                        <button class="underline"> Partager </button>
+                    </span>
+                    <span class="save underline flex gap-2"> 
+                        <img src="./assets/icons/heart.svg" class="w-[16px]" alt="heart"/>
+                        <button class="underline"> Enregistrer </button>
+                    </span>
+                </div>
             </div>
-        </div>
 
-        <gallery-preview 
-            [gallery]="apartment.gallery" 
-            [alt]="apartment.name" 
-            (displayFullGalleryEvent)="setDisplayFullGallery()"
-        >
-        </gallery-preview>
+                
+            <gallery-preview 
+                [gallery]="apartment.gallery" 
+                [alt]="apartment.name" 
+                (displayFullGalleryEvent)="setDisplayFullGallery()"
+            />
+        
 
-        <div class="row flex gap-8 mt-4">
+            <div class="row flex gap-8 mt-4">
 
-            <div class="col-left">
+                <div class="col-left">
 
-                <div class="row flex justify-between py-4">
-                    
-                    <div class="col">
-                        <div class="row text-xl font-medium">
-                            <span class="text after:content-['_·']"> {{apartment.property_type}}</span>
-                            <span class="text"> Chez {{apartment.host_name}}</span>
+                    <div class="row flex justify-between py-4">
+                        
+                        <div class="col">
+                            <div class="row text-xl font-medium">
+                                <span class="text after:content-['_·']"> {{apartment.property_type}}</span>
+                                <span class="text"> Chez {{apartment.host_name}}</span>
+                            </div>
+
+                            <div class="row font-light">
+                                <span class="text after:content-['_·']"> {{apartment.accommodates}} voyageurs </span>
+                                <span class="text after:content-['_·']"> {{apartment.bedrooms}} chambres privées </span>
+                                <span class="text after:content-['_·']"> {{apartment.beds}} lits </span>
+                                <span class="text"> {{apartment.bathrooms}} salle de bain privée </span>            
+                            </div>
                         </div>
 
-                        <div class="row font-light">
-                            <span class="text after:content-['_·']"> {{apartment.accommodates}} voyageurs </span>
-                            <span class="text after:content-['_·']"> {{apartment.bedrooms}} chambres privées </span>
-                            <span class="text after:content-['_·']"> {{apartment.beds}} lits </span>
-                            <span class="text"> {{apartment.bathrooms}} salle de bain privée </span>            
+                        <div class="col">
+                            <img 
+                                class="w-[56px] rounded-[50px]"
+                                [src]="apartment.host_picture_url" 
+                                [alt]="apartment.host_location"
+                            >
                         </div>
+
                     </div>
 
-                    <div class="col">
-                        <img 
-                            class="w-[56px] rounded-[50px]"
-                            [src]="apartment.host_picture_url" 
-                            [alt]="apartment.host_location"
-                        >
+                    <div class="cancellation flex py-4 gap-2 border-t">
+                        <img src="./assets/icons/calendar.svg" class="w-[24px]" alt="calendar" />
+                        <span> Annulation gratuite avant le {{ addDays(today, 15) | toLocaleDate }}</span>
+                    </div>
+
+
+                    <div class="aircover flex flex-col items-start gap-4 py-8 border-t">
+                        <img src="./assets/logos/aircover_logo.png" class="h-[26px]" alt="aircover">
+                        <div class="text font-semilight">
+                            Chaque réservation comprend une protection gratuite en cas d'annulation par l'hôte, d'inexactitudes dans la description du logement, ainsi que d'autres problèmes comme les difficultés d'accès au logement.
+                        </div>
+                        <button class="underline font-medium"> En savoir plus </button>
+                    </div>
+
+                    <div 
+                        class="description font-semilight py-4 border-t" 
+                        [innerHTML]="apartment.description">
                     </div>
 
                 </div>
 
-                <div class="cancellation flex py-4 gap-2 border-t">
-                    <img src="./assets/icons/calendar.svg" class="w-[24px]" alt="calendar" />
-                    <span> Annulation gratuite avant le {{ addDays(today, 15) | toLocaleDate }}</span>
+                <div class="col-right min-w-[370px] py-4 ">
+                    <booking-form  class="" [apartment]="apartment" />
                 </div>
 
-
-                <div class="aircover flex flex-col items-start gap-4 py-8 border-t">
-                    <img src="./assets/logos/aircover_logo.png" class="h-[26px]" alt="aircover">
-                    <div class="text font-semilight">
-                        Chaque réservation comprend une protection gratuite en cas d'annulation par l'hôte, d'inexactitudes dans la description du logement, ainsi que d'autres problèmes comme les difficultés d'accès au logement.
-                    </div>
-                    <button class="underline font-medium"> En savoir plus </button>
-                </div>
-
-                <div 
-                    class="description font-semilight py-4 border-t" 
-                    [innerHTML]="apartment.description">
-                </div>
-
-            </div>
-
-            <div class="col-right min-w-[370px] py-4 ">
-                <booking-form  class="" [apartment]="apartment"></booking-form>
             </div>
 
         </div>
+        
 
     </div>
-
-</div>
+    
+}

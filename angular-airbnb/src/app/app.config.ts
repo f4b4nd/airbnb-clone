@@ -3,8 +3,8 @@ import { provideRouter } from '@angular/router'
 import fr from '@angular/common/locales/fr'
 
 import { DatePipe, registerLocaleData } from '@angular/common'
-import { provideState, provideStore } from '@ngrx/store'
 import { routes } from './app.routes'
+import { provideHttpClient } from '@angular/common/http'
 
 
 registerLocaleData(fr)
@@ -16,6 +16,7 @@ export const appConfig: ApplicationConfig = {
             useValue: "fr_FR", 
         },
         provideRouter(routes),
+        provideHttpClient(),
         DatePipe,
     ]
 }

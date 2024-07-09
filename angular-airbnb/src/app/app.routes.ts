@@ -12,7 +12,6 @@ export const routes: Routes = [
         path: 'apartment/:id',
         loadComponent: () => import('./pages').then(module => module.ApartmentComponent),
     },
-
     { 
         path: '**', 
         redirectTo: '' 

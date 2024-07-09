@@ -2,8 +2,8 @@
     <top-navbar containerWidth="container-xl"></top-navbar>
 
     <div class="container container-xl row flex items-center justify-between gap-8">
-        <category-navbar class="hidden-scrollbar overflow-x-scroll"></category-navbar>
-        <filter-modal-button> </filter-modal-button>
+        <category-navbar class="hidden-scrollbar overflow-x-scroll" />
+        <filter-modal-button />
     </div>
 
 </div>
@@ -11,11 +11,11 @@
 
     <card-group 
         class="grid grid-cols-auto-270px auto-rows-[400px] gap-4"
-        [items]="apartments"
+        [items]="(apartments$ | async) || []"
     >
 
         <a 
-            *ngFor="let apartment of apartments"
+            *ngFor="let apartment of apartments$ | async"
             routerLink="/apartment/{{apartment.id}}"
         >
 
@@ -34,7 +34,7 @@
 
                         <div class="card__ratings flex items-center gap-1">
                             <img src="./assets/icons/star.svg" alt="star" class="w-[12px] h-[12px]"/>
-                            <card-text class="card__text" [text]="apartment.review_scores_accuracy | toString"></card-text>
+                            <card-text class="card__text" [text]="apartment.review_scores_accuracy | toString"/>
                         </div>
 
                     </card-row>
@@ -45,14 +45,14 @@
                     </card-text>
 
                     <card-row class="card__row text-ellipsis overflow-hidden whitespace-nowrap">
-                        <card-text class="card__text text-zinc-500" [text]="apartment.property_type"></card-text>
-                        <card-text class="card__text text-zinc-500" text="·"></card-text>
-                        <card-text class="card__text text-zinc-500" [text]="apartment.host_name"></card-text>
+                        <card-text class="card__text text-zinc-500" [text]="apartment.property_type"/>
+                        <card-text class="card__text text-zinc-500" text="·"/>
+                        <card-text class="card__text text-zinc-500" [text]="apartment.host_name"/>
                     </card-row>
 
                     <card-row class="card__row mt-1 flex gap-1">
-                        <card-text class="card__text font-medium" [text]="apartment.price | toLocaleCurrency"></card-text>
-                        <card-text class="card__text" text="par nuit"></card-text>
+                        <card-text class="card__text font-medium" [text]="apartment.price | toLocaleCurrency"/>
+                        <card-text class="card__text" text="par nuit"/>
                     </card-row>
                     
                 </div>

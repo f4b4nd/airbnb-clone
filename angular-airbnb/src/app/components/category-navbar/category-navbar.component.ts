@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { Component } from '@angular/core'
 
-import { environment } from '../../../environments/environment'
 import { CapitalizePipe } from '../../pipes'
-import { NgFor } from '@angular/common'
+import { AsyncPipe, NgFor } from '@angular/common'
+import { CategoriesGateway } from '../../services/categories.gateway'
+import { Observable } from 'rxjs'
 
 @Component({
     selector: 'category-navbar',
     standalone: true,
-    imports: [CapitalizePipe, NgFor],
+    imports: [CapitalizePipe, AsyncPipe, NgFor],
     template: `
         <div class="category-navbar hidden-scrollbar overflow-x-scroll bg-white py-4">
 
             <div class="navbar__wrapper flex items-center gap-x-8"> 
 
                 <div
-                    *ngFor="let category of categories" 
+                    *ngFor="let category of categories$ | async" 
                     class="category-nav-item"
                 >
 
@@ -37,24 +37,10 @@ import { NgFor } from '@angular/common'
     `,
 })
 
-export class CategoryNavbarComponent implements OnInit {
+export class CategoryNavbarComponent {
 
-    categories: TCategory[] = []
+    categories$: Observable<TCategory[]> = this.categoriesGateway.fetchCategories()
 
-    private _apiURL = environment.apiUrl
-    
-    constructor(private http: HttpClient) {
+    constructor(private categoriesGateway: CategoriesGateway) {}
 
-        this.getCategories().subscribe(data => {
-            this.categories = data.categories
-        })
-    
-    }
-
-    public getCategories() {
-        return this.http.get<APIResponse>(this._apiURL)
-    }
-    
-    ngOnInit() {}
-      
 }
