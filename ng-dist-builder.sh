@@ -1,7 +1,7 @@
 #!/bin/sh
 
 APP_NAME=angular-airbnb
-REPO_NAME=angular-airbnb
+REPO_NAME=airbnb-clone
 
 if [ -d "./docs" ]; then
     rm -r ./docs
