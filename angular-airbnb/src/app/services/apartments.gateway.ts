@@ -9,7 +9,7 @@ import { Observable, combineLatest, map } from "rxjs"
 
 export class ApartmentsGateway {
 
-    private _apiURL = environment.apiUrl
+    private _apiURL = environment.apiURLApartments
 
     constructor (private http: HttpClient) {}
 

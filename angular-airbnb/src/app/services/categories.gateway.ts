@@ -9,7 +9,7 @@ import { Observable, map } from "rxjs"
 
 export class CategoriesGateway {
 
-    private _apiURL = environment.apiUrl
+    private _apiURL = environment.apiURLCategories
 
     constructor (private http: HttpClient) {}
 

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Observable, Subscription, combineLatest, map } from 'rxjs'
+import { Observable, map } from 'rxjs'
 
 import { TopNavbarComponent } from '../../components/top-navbar'
 import { BookingFormComponent, GalleryFullComponent, GalleryPreviewComponent } from '../../components'

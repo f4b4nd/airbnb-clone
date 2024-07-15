@@ -1,10 +1,14 @@
 import { ApplicationConfig, LOCALE_ID } from '@angular/core'
 import { provideRouter } from '@angular/router'
+import { provideState, provideStore } from '@ngrx/store'
+import { provideHttpClient } from '@angular/common/http'
+
 import fr from '@angular/common/locales/fr'
 
 import { DatePipe, registerLocaleData } from '@angular/common'
 import { routes } from './app.routes'
-import { provideHttpClient } from '@angular/common/http'
+
+import { engineFeature } from '../state/engine.store'
 
 
 registerLocaleData(fr)
@@ -16,6 +20,8 @@ export const appConfig: ApplicationConfig = {
             useValue: "fr_FR", 
         },
         provideRouter(routes),
+        provideState(engineFeature),
+        provideStore(),
         provideHttpClient(),
         DatePipe,
     ]

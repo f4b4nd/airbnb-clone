@@ -1,5 +1,6 @@
 type TCategory = {
-    label: string,
+    id: number,
+    name: string,
     file: string
 }
 
@@ -31,4 +32,14 @@ type TApartment = {
 type APIResponse = {
     apartments: TApartment[],
     categories: TCategory[],
+}
+
+type EngineState = { 
+    locations: Array<string>,
+    category: number|null,
+    start_date: Date|null,
+    end_date: Date|null,
+    maxOccupancy: number,
+    areAnimalsAllowed: boolean,
+    areBabiesAllowed: boolean, 
 }

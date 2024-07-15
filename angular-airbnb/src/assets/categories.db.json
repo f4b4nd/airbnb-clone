@@ -1,0 +1,264 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "arctique",
+            "file": "arctique.jpg"
+        },
+        {
+            "id": 2,
+            "name": "art et créativité",
+            "file": "art_et_creativite.jpg"
+        },
+        {
+            "id": 3,
+            "name": "au pied des pistes",
+            "file": "au_pied_des_pistes.jpg"
+        },
+        {
+            "id": 4,
+            "name": "avec vue",
+            "file": "avec_vue.jpg"
+        },
+        {
+            "id": 5,
+            "name": "bateaux",
+            "file": "bateaux.jpg"
+        },
+        {
+            "id": 6,
+            "name": "bord de lac",
+            "file": "bord_de_lac.jpg"
+        },
+        {
+            "id": 7,
+            "name": "cabanes de berger",
+            "file": "cabanes_de_berger.jpg"
+        },
+        {
+            "id": 8,
+            "name": "cabanes",
+            "file": "cabanes.jpg"
+        },
+        {
+            "id": 9,
+            "name": "campagne",
+            "file": "campagne.jpg"
+        },
+        {
+            "id": 10,
+            "name": "caravanes",
+            "file": "caravanes.jpg"
+        },
+        {
+            "id": 11,
+            "name": "casas particulares",
+            "file": "casas_particulares.jpg"
+        },
+        {
+            "id": 12,
+            "name": "chalets tippi",
+            "file": "chalets_tippi.jpg"
+        },
+        {
+            "id": 13,
+            "name": "chambres d'hôtes",
+            "file": "chambres_d_hotes.jpg"
+        },
+        {
+            "id": 14,
+            "name": "chambres privées",
+            "file": "chambres_privees.jpg"
+        },
+        {
+            "id": 15,
+            "name": "châteaux",
+            "file": "chateaux.jpg"
+        },
+        {
+            "id": 16,
+            "name": "conteneurs maritimes",
+            "file": "conteneurs_maritimes.jpg"
+        },
+        {
+            "id": 17,
+            "name": "cuisines équipées",
+            "file": "cuisines_equipees.jpg"
+        },
+        {
+            "id": 18,
+            "name": "dammusi",
+            "file": "dammusi.jpg"
+        },
+        {
+            "id": 19,
+            "name": "désert",
+            "file": "desert.jpg"
+        },
+        {
+            "id": 20,
+            "name": "design",
+            "file": "design.jpg"
+        },
+        {
+            "id": 21,
+            "name": "dôme",
+            "file": "dome.jpg"
+        },
+        {
+            "id": 22,
+            "name": "fermes",
+            "file": "fermes.jpg"
+        },
+        {
+            "id": 23,
+            "name": "golf",
+            "file": "golf.jpg"
+        },
+        {
+            "id": 24,
+            "name": "grandes demeures",
+            "file": "grandes_demeures.jpg"
+        },
+        {
+            "id": 25,
+            "name": "granges",
+            "file": "granges.jpg"
+        },
+        {
+            "id": 26,
+            "name": "îles",
+            "file": "iles.jpg"
+        },
+        {
+            "id": 27,
+            "name": "lacs",
+            "file": "lacs.jpg"
+        },
+        {
+            "id": 28,
+            "name": "luxe",
+            "file": "luxe.jpg"
+        },
+        {
+            "id": 29,
+            "name": "maisons cycladiques",
+            "file": "maisons_cycladiques.jpg"
+        },
+        {
+            "id": 30,
+            "name": "maisons organiques",
+            "file": "maisons_organiques.jpg"
+        },
+        {
+            "id": 31,
+            "name": "maisons troglodytes",
+            "file": "maisons_troglodytes.jpg"
+        },
+        {
+            "id": 32,
+            "name": "minsus",
+            "file": "minsus.jpg"
+        },
+        {
+            "id": 33,
+            "name": "moulins à vent",
+            "file": "moulins_a_vent.jpg"
+        },
+        {
+            "id": 34,
+            "name": "parc nationaux",
+            "file": "parc_nationaux.jpg"
+        },
+        {
+            "id": 35,
+            "name": "patrimoine",
+            "file": "patrimoine.jpg"
+        },
+        {
+            "id": 36,
+            "name": "pianos à queue",
+            "file": "pianos_a_queue.jpg"
+        },
+        {
+            "id": 37,
+            "name": "piscines",
+            "file": "piscines.jpg"
+        },
+        {
+            "id": 38,
+            "name": "plages",
+            "file": "plages.jpg"
+        },
+        {
+            "id": 39,
+            "name": "riads",
+            "file": "riads.jpg"
+        },
+        {
+            "id": 40,
+            "name": "ryokans",
+            "file": "ryokans.jpg"
+        },
+        {
+            "id": 41,
+            "name": "séjours déconnectés",
+            "file": "sejours_deconnectes.jpg"
+        },
+        {
+            "id": 42,
+            "name": "skis",
+            "file": "skis.jpg"
+        },
+        {
+            "id": 43,
+            "name": "sous les tropiques",
+            "file": "sous_les_tropiques.jpg"
+        },
+        {
+            "id": 44,
+            "name": "sur l'eau",
+            "file": "sur_l_eau.jpg"
+        },
+        {
+            "id": 45,
+            "name": "surf",
+            "file": "surf.jpg"
+        },
+        {
+            "id": 46,
+            "name": "tiny houses",
+            "file": "tiny_house.jpg"
+        },
+        {
+            "id": 47,
+            "name": "tours",
+            "file": "tours.jpg"
+        },
+        {
+            "id": 48,
+            "name": "trulli",
+            "file": "trulli.jpg"
+        },
+        {
+            "id": 49,
+            "name": "vignoble",
+            "file": "vignoble.jpg"
+        },
+        {
+            "id": 50,
+            "name": "villes emblématiques",
+            "file": "villes_emblematiques.jpg"
+        },
+        {
+            "id": 51,
+            "name": "wow",
+            "file": "wow.jpg"
+        },
+        {
+            "id": 52,
+            "name": "yourtes",
+            "file": "yourtes.jpg"
+        }
+    ]
+}

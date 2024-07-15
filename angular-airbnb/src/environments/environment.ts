@@ -5,6 +5,9 @@
 export const environment = {
     production: false,
     apiUrl: './assets/db.json',
+    apiURLApartments: './assets/apartments.db.json',
+    apiURLCategories: './assets/categories.db.json', 
+
 }
 
 /*
