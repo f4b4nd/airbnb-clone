@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output, Signal, computed } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Observable, take } from 'rxjs'
 import { AsyncPipe } from '@angular/common'
 
-import { CapitalizePipe } from '../../pipes'
 import { CategoriesGateway } from '../../services/categories.gateway'
 import { EngineService } from '../../../state/engine.service'
 
@@ -11,7 +10,7 @@ import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.comp
 @Component({
     selector: 'category-navbar',
     standalone: true,
-    imports: [CategoryNavbarCheckboxComponent, CapitalizePipe, AsyncPipe],
+    imports: [CategoryNavbarCheckboxComponent, AsyncPipe],
     template: `
 
         <div class="category-navbar hidden-scrollbar overflow-x-scroll bg-white py-4">
@@ -25,7 +24,7 @@ import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.comp
                         [category]="category"
                         (onChangeEmitter)="this.onChange(category.id)"
                     />
-                    
+
                 }
     
             </div>
