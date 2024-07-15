@@ -1,16 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output, Signal, computed } from '@angular/core'
-import { Observable, first, map, take } from 'rxjs'
-import { AsyncPipe, NgFor } from '@angular/common'
+import { Observable, take } from 'rxjs'
+import { AsyncPipe } from '@angular/common'
 
 import { CapitalizePipe } from '../../pipes'
 import { CategoriesGateway } from '../../services/categories.gateway'
 import { EngineService } from '../../../state/engine.service'
-import { NgModel } from '@angular/forms'
+
+import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.component'
 
 @Component({
     selector: 'category-navbar',
     standalone: true,
-    imports: [CapitalizePipe, AsyncPipe],
+    imports: [CategoryNavbarCheckboxComponent, CapitalizePipe, AsyncPipe],
     template: `
 
         <div class="category-navbar hidden-scrollbar overflow-x-scroll bg-white py-4">
@@ -18,29 +19,13 @@ import { NgModel } from '@angular/forms'
             <div class="navbar__wrapper flex items-center gap-x-8"> 
 
                 @for (category of categories$ | async; track category.id) {
-           
-                     <label class="category-nav-item">
-                        {{this.engineService.category$$()}}
 
-                        <input 
-                            type="checkbox"
-                            [checked]="this.engineService.category$$() === category.id"
-                            [disabled]="this.engineService.category$$() === category.id"
-                            (change)="this.onChange(category.id)"
-                        />
-
-                        <img 
-                            class="w-[24px] h-[24px] contrast-[0.3]" 
-                            [src]="'./assets/icons/category/' + category.file" 
-                        />
-
-                        <div class="w-[max-content] text-gray-500 text-[12px]">
-                            {{category.name | capitalize }}
-                        </div>
-
-                    </label>
-
-
+                    <category-navbar-checkbox 
+                        [isActive]="this.engineService.category$$() === category.id"
+                        [category]="category"
+                        (onChangeEmitter)="this.onChange(category.id)"
+                    />
+                    
                 }
     
             </div>
