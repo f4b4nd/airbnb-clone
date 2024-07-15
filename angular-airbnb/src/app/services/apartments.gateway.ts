@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { environment } from "../../environments/environment"
-import { filter, map } from "rxjs"
+import { Observable, combineLatest, map } from "rxjs"
 
 @Injectable({
     providedIn: 'root',
@@ -13,29 +13,28 @@ export class ApartmentsGateway {
 
     constructor (private http: HttpClient) {}
 
-    public fetchApartments () {
+    public fetchApartments (): Observable<TApartment[]>  {
 
         const headers = new HttpHeaders()
-            .set('Content-Type', 'application/json')
+            .set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
             .set('Access-Control-Allow-Origin', '*')
 
-        return this.http.get<APIResponse>(this._apiURL, {headers})
+        return this.http.get<APIResponse>(`${this._apiURL}`, {headers})
             .pipe(
-                map(response => response.apartments),
+                map(res => res.apartments),
             )
+          
     }
 
-    public fetchApartment (apartmentId: string) {
+    public fetchApartmentByID (apartmentID$: Observable<string>) {
 
-        const headers = new HttpHeaders()
-            .set('Content-Type', 'application/json')
-            .set('Access-Control-Allow-Origin', '*')
+        const apartments$: Observable<TApartment[]> = this.fetchApartments()
 
-        return this.http.get<APIResponse>(this._apiURL, {headers})
+        return combineLatest([apartments$, apartmentID$])
             .pipe(
-                map(response => response.apartments),
-                map(apartments => apartments.find(apartment => `${apartment.id}` === apartmentId)),
+                map(([apartments, apartmentID]) => apartments.find(apartment => `${apartment.id}` === apartmentID)),
             )
+
     }
 
 

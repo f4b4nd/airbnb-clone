@@ -24,6 +24,7 @@ import { ApartmentsGateway } from '../../services/apartments.gateway'
 export class ApartmentComponent {
 
     apartment$: Observable<TApartment|undefined> = this.fetchApartment()
+
     public today: Date = new Date()
 
     public displayFullGallery: boolean = false
@@ -48,14 +49,13 @@ export class ApartmentComponent {
     
     private fetchApartment () {
 
-        const apartments$: Observable<TApartment[]> = this.apartmentGateway.fetchApartments()
-
-        const apartmentID$: Observable<string> = this.route.params.pipe(map(params => params['id']))
-
-        return combineLatest([apartments$, apartmentID$])
+        const apartmentID$: Observable<string> = this.route.params
             .pipe(
-                map(([apartments, apartmentID]) => apartments.find(apartment => `${apartment.id}` === apartmentID)),
-        )
+                map(params => params['id']),
+            )
+
+        return this.apartmentGateway.fetchApartmentByID(apartmentID$)
+
     }
 
 
