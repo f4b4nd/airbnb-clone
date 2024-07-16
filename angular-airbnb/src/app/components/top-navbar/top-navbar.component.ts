@@ -57,7 +57,11 @@ import { TopNavbarSearchComponent } from './top-navbar.search.component'
 })
 
 export class TopNavbarComponent {
+
     logoSrc = "./assets/logos/airbnb_logo.png"
+
     planetImgSrc = "./assets/icons/planet.svg"
+
     @Input() containerWidth = ""
+    
 }

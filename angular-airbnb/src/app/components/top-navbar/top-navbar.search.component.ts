@@ -1,11 +1,15 @@
 import { Component } from '@angular/core'
+import { DialogButtonComponent } from '../dialog/dialog.component'
 
 @Component({
     selector: 'top-navbar-search',
     standalone: true,
+    imports: [DialogButtonComponent],
     template: `
         <div class="search flex items-center px-3 py-2 border rounded-[50px] gap-4 text-sm">
 
+            <dialog-button />
+            
             <div class="search__location px-2 border-r">
                 <button class="font-medium"> N'importe où </button>
             </div>
@@ -35,5 +39,7 @@ import { Component } from '@angular/core'
 })
 
 export class TopNavbarSearchComponent {
+
     submitLogoSrc = "./assets/icons/loupe.svg"
+
 }
