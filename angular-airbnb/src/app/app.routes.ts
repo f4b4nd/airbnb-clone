@@ -9,8 +9,8 @@ export const routes: Routes = [
         loadComponent: () => import('./pages').then(module => module.HomeComponent),
     },
     { 
-        path: 'apartment/:id',
-        loadComponent: () => import('./pages').then(module => module.ApartmentComponent),
+        path: 'house/:id',
+        loadComponent: () => import('./pages').then(module => module.HouseComponent),
     },
     { 
         path: '**', 

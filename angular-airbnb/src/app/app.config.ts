@@ -8,7 +8,8 @@ import fr from '@angular/common/locales/fr'
 import { DatePipe, registerLocaleData } from '@angular/common'
 import { routes } from './app.routes'
 
-import { engineFeature } from '../state/engine.store'
+import { engineFeature } from '../state/engine.store';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 
 
 registerLocaleData(fr)
@@ -23,6 +24,6 @@ export const appConfig: ApplicationConfig = {
         provideState(engineFeature),
         provideStore(),
         provideHttpClient(),
-        DatePipe,
+        DatePipe, provideAnimationsAsync(),
     ]
 }

@@ -1,9 +1,15 @@
-export { CardComponent, CardTextComponent, CardGroupComponent, CardRowComponent } from './card'
+export { BookingFormComponent } from './forms/booking-form.component'
 
-export { GalleryPreviewComponent, GalleryFullComponent } from './gallery'
+export { CategoryNavbarComponent } from './category-navbar/category-navbar.component'
 
-export { CategoryNavbarComponent } from './category-navbar'
+export { CardComponent } from './card/card.component'
+export { CardTextComponent } from './card/card.text.component'
+export { CardGroupComponent } from './card/card.group.component'
+export { CardRowComponent } from './card/card.row.component'
 
-export { FilterModalButtonComponent } from './filter-modal'
+export { FilterModalButtonComponent } from './filter-modal/filter-modal.button.component'
 
-export { BookingFormComponent } from './forms'
+export { GalleryFullComponent } from './gallery/gallery.full.component'
+export { GalleryPreviewComponent } from './gallery/gallery.preview.component'
+
+export { TopNavbarComponent } from './top-navbar/top-navbar.component'

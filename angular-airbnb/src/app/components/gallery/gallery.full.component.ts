@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
     template: `
         <div class="gallery-full-container absolute top-0 left-0 w-full bg-white z-[2]">
 
-            <div class="container container-apartment py-4">
+            <div class="container container-house py-4">
 
                 <div class="row flex justify-end my-4">
                     <button class="btn btn-close" (click)="hideFullGallery()"> X </button>

@@ -9,8 +9,8 @@ import { ToLocaleCurrencyPipe } from '../../pipes'
         <div class="booking-form flex flex-col gap-4 p-6 border rounded-xl shadow-3xl">
 
             <div class="row flex justify-between">
-                <div class="price"> <span class="font-bold text-xl">{{apartment.price | toLocaleCurrency}}</span> par nuit </div>
-                <button class="reviews underline"> {{apartment.number_of_reviews }} commentaires </button>
+                <div class="price"> <span class="font-bold text-xl">{{house.price | toLocaleCurrency}}</span> par nuit </div>
+                <button class="reviews underline"> {{house.number_of_reviews }} commentaires </button>
             </div>
 
             <div class="row flex border my-2"> 
@@ -28,7 +28,7 @@ import { ToLocaleCurrencyPipe } from '../../pipes'
             <div class="text text-center font-light"> Aucun montant ne vous sera débité pour le moment </div>
 
             <div class="row flex justify-between text-gray-800">
-                <div class="price__label underline"> {{apartment.price | toLocaleCurrency}} x {{numberOfNights}} nuits </div>
+                <div class="price__label underline"> {{house.price | toLocaleCurrency}} x {{numberOfNights}} nuits </div>
                 <div class="price__value"> {{price * 7}} € </div>
             </div>
 
@@ -57,7 +57,7 @@ import { ToLocaleCurrencyPipe } from '../../pipes'
 })
 
 export class BookingFormComponent {
-    @Input() apartment!: TApartment
+    @Input() house!: House
 
     numberOfNights = 5
     price = 200

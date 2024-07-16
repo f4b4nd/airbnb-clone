@@ -3,7 +3,7 @@ import { createActionGroup, createFeature, createReducer, emptyProps, on, props 
 
 export const initialEngineState: EngineState = {
     locations: [],
-    category: null,
+    houseCategory: null,
     start_date: null,
     end_date: null,
     maxOccupancy: 0,
@@ -15,8 +15,8 @@ export const initialEngineState: EngineState = {
 export const engineActions = createActionGroup({
     source: 'Engine',
     events: {
-        setCategory: props<{categoryID: number}>(),
-        unsetCategory: emptyProps(),
+        setHouseCategory: props<{houseCategoryID: number}>(),
+        unsetHouseCategory: emptyProps(),
     }
 })
 
@@ -27,17 +27,17 @@ export const engineFeature = createFeature({
 
         initialEngineState,
 
-        on(engineActions.setCategory, (state, action) => {
+        on(engineActions.setHouseCategory, (state, action) => {
             return {
                 ...state,
-                category: action.categoryID,
+                houseCategory: action.houseCategoryID,
             }
         }),
 
-        on(engineActions.unsetCategory, (state) => {
+        on(engineActions.unsetHouseCategory, (state) => {
             return {
                 ...state,
-                category: null,
+                houseCategory: null,
             }
         }),
         

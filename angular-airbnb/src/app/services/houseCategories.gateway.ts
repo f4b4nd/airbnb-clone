@@ -7,21 +7,21 @@ import { Observable, map } from "rxjs"
     providedIn: 'root',
 })
 
-export class CategoriesGateway {
+export class HouseCategoriesGateway {
 
-    private _apiURL = environment.apiURLCategories
+    private _apiURLHouseCategories = environment.apiURLHouseCategories
 
     constructor (private http: HttpClient) {}
 
-    public fetchCategories (): Observable<TCategory[]> {
+    public fetchHouseCategories (): Observable<HouseCategory[]> {
 
         const headers = new HttpHeaders()
             .set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
             .set('Access-Control-Allow-Origin', '*')
 
-        return this.http.get<APIResponse>(this._apiURL, {headers})
+        return this.http.get<APIResponse['houseCategories']>(this._apiURLHouseCategories, {headers})
             .pipe(
-                map(response => response.categories),
+                map(response => response.data),
             )
 
     }

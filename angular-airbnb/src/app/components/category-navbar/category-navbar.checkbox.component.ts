@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Component, EventEmitter, Input, Output, Signal } from '@angular/core'
 
 import { CapitalizePipe } from '../../pipes'
 
@@ -8,10 +8,14 @@ import { CapitalizePipe } from '../../pipes'
     standalone: true,
     imports: [CapitalizePipe],
     styles: `
+
+        $gainsboro: #DCDCDC;
+
         .category-nav-item {
 
             input:not(:disabled) + .item__wrapper:hover {
-                cursor: pointer;            
+                cursor: pointer;
+                border-bottom: 2px solid $gainsboro;
             }
 
             input:checked + .item__wrapper {
@@ -26,24 +30,24 @@ import { CapitalizePipe } from '../../pipes'
         <label class="category-nav-item">
 
             <input
-                class="hidden"
                 type="checkbox"
-                [checked]="isActive"
-                [disabled]="isActive"
-                (change)="this.onChange(category.id)"
+                class="hidden"
+                [checked]="isActive$$()"
+                [disabled]="isActive$$()"
+                (change)="this.onChange(houseCategory.id)"
             />
 
             <span 
                 class="item__wrapper flex flex-col items-center"
-            > 
+            >
 
                 <img 
                     class="w-[24px] h-[24px] contrast-[0.3]" 
-                    [src]="'./assets/icons/category/' + category.file" 
+                    [src]="'./assets/icons/category/' + houseCategory.file" 
                 />
 
                 <div class="w-[max-content] text-gray-500 text-[12px]">
-                    {{category.name | capitalize }}
+                    {{houseCategory.name | capitalize }}
                 </div>
 
             </span>
@@ -55,16 +59,16 @@ import { CapitalizePipe } from '../../pipes'
 
 export class CategoryNavbarCheckboxComponent {
 
-    @Input() isActive: boolean = false
+    @Input() isActive$$!: Signal<boolean>
 
-    @Input() category!: TCategory
+    @Input() houseCategory!: HouseCategory
 
     @Output() onChangeEmitter = new EventEmitter<number>
 
 
-    onChange (categoryID: number) {
+    onChange (houseCategoryID: number) {
 
-        this.onChangeEmitter.emit(categoryID)
+        this.onChangeEmitter.emit(houseCategoryID)
 
     }
 

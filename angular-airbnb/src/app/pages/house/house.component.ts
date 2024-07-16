@@ -2,14 +2,14 @@ import { Component, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Observable, map } from 'rxjs'
 
-import { TopNavbarComponent } from '../../components/top-navbar'
-import { BookingFormComponent, GalleryFullComponent, GalleryPreviewComponent } from '../../components'
 import { AsyncPipe, NgIf } from '@angular/common'
 import { ToLocaleDatePipe } from '../../pipes'
-import { ApartmentsGateway } from '../../services/apartments.gateway'
+import { HousesGateway } from '../../services/houses.gateway'
+
+import { BookingFormComponent, GalleryFullComponent, GalleryPreviewComponent, TopNavbarComponent } from '../../components'
 
 @Component({
-    templateUrl: './apartment.component.html',
+    templateUrl: './house.component.html',
     standalone: true,
     imports: [
         TopNavbarComponent,
@@ -21,9 +21,9 @@ import { ApartmentsGateway } from '../../services/apartments.gateway'
     ],
 })
 
-export class ApartmentComponent {
+export class HouseComponent {
 
-    apartment$: Observable<TApartment|undefined> = this.fetchApartment()
+    house$: Observable<House|undefined> = this.fetchHouse()
 
     public today: Date = new Date()
 
@@ -44,20 +44,19 @@ export class ApartmentComponent {
         return result
     }
 
-    constructor(private route: ActivatedRoute, private apartmentGateway: ApartmentsGateway) {}
+    constructor(private route: ActivatedRoute, private houseGateway: HousesGateway) {}
 
     
-    private fetchApartment () {
+    private fetchHouse () {
 
-        const apartmentID$: Observable<string> = this.route.params
+        const houseID$: Observable<string> = this.route.params
             .pipe(
                 map(params => params['id']),
             )
 
-        return this.apartmentGateway.fetchApartmentByID(apartmentID$)
+        return this.houseGateway.fetchHouseByID(houseID$)
 
     }
-
 
 
 }

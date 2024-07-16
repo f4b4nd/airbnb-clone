@@ -1,10 +1,10 @@
-type TCategory = {
+type HouseCategory = {
     id: number,
     name: string,
     file: string
 }
 
-type TApartment = {
+type House = {
     id: number,
     name: string,
     description: string,
@@ -30,13 +30,17 @@ type TApartment = {
 }
 
 type APIResponse = {
-    apartments: TApartment[],
-    categories: TCategory[],
+    houses: {
+        data: House[]
+    },
+    houseCategories: {
+        data: HouseCategory[]
+    },
 }
 
 type EngineState = { 
     locations: Array<string>,
-    category: number|null,
+    houseCategory: number|null,
     start_date: Date|null,
     end_date: Date|null,
     maxOccupancy: number,

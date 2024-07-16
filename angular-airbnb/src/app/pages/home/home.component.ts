@@ -1,11 +1,12 @@
 import { Component } from '@angular/core'
-import { CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent, CategoryNavbarComponent, FilterModalButtonComponent } from '../../components'
 import { ToLocaleCurrencyPipe, ToStringPipe } from '../../pipes'
 import { RouterLink } from '@angular/router'
-import { TopNavbarComponent } from '../../components/top-navbar'
+
 import { AsyncPipe, NgFor } from '@angular/common'
-import { ApartmentsGateway } from '../../services/apartments.gateway'
+import { HousesGateway } from '../../services/houses.gateway'
 import { Observable } from 'rxjs'
+
+import { CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent, CategoryNavbarComponent, FilterModalButtonComponent, TopNavbarComponent } from '../../components'
 
 @Component({
     templateUrl: './home.component.html',
@@ -21,8 +22,8 @@ import { Observable } from 'rxjs'
 
 export class HomeComponent {
 
-    apartments$: Observable<TApartment[]> = this.apartmentsGateway.fetchApartments() || []
+    houses$: Observable<House[]> = this.housesGateway.fetchHouses() || []
 
-    constructor(private apartmentsGateway: ApartmentsGateway) {}
+    constructor(private housesGateway: HousesGateway) {}
 
 }

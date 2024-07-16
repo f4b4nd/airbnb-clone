@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, computed } from '@angular/core'
 import { Observable, take } from 'rxjs'
 import { AsyncPipe } from '@angular/common'
 
-import { CategoriesGateway } from '../../services/categories.gateway'
+import { HouseCategoriesGateway } from '../../services/houseCategories.gateway'
 import { EngineService } from '../../../state/engine.service'
 
 import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.component'
@@ -17,12 +17,12 @@ import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.comp
 
             <div class="navbar__wrapper flex items-center gap-x-8"> 
 
-                @for (category of categories$ | async; track category.id) {
+                @for (houseCategory of houseCategories$ | async; track houseCategory.id) {
 
                     <category-navbar-checkbox 
-                        [isActive]="this.engineService.category$$() === category.id"
-                        [category]="category"
-                        (onChangeEmitter)="this.onChange(category.id)"
+                        [isActive$$]="this.isActiveItem$$(houseCategory.id)"
+                        [houseCategory]="houseCategory"
+                        (onChangeEmitter)="this.onChange(houseCategory.id)"
                     />
 
                 }
@@ -35,29 +35,35 @@ import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.comp
 
 export class CategoryNavbarComponent implements OnInit {
 
-    categories$?: Observable<TCategory[]>
+    houseCategories$?: Observable<HouseCategory[]>
+
     
-    constructor(private categoriesGateway: CategoriesGateway, public engineService: EngineService) {}
+    constructor(private houseCategoriesGateway: HouseCategoriesGateway, public engineService: EngineService) {}
+
+    isActiveItem$$ (houseCategoryID: number) {
+        return computed(() => this.engineService.houseCategory$$() === houseCategoryID)
+    }
 
     ngOnInit() {
 
-        this.categories$ = this.categoriesGateway.fetchCategories()
+        this.houseCategories$ = this.houseCategoriesGateway.fetchHouseCategories()
 
-        this.categories$
+        this.houseCategories$
             .pipe(
                 take(1),
             )
-            .subscribe(categories => {
-                if (categories.length > 0) {
-                    this.engineService.setCategory(categories[0].id)
+            .subscribe(houseCategories => {
+                if (houseCategories.length > 0) {
+                    const initialCategory = houseCategories[0]
+                    this.engineService.setHouseCategory(initialCategory.id)
                 }
             })
     
     }
     
-    onChange (categoryID: number) {
+    onChange (houseCategoryID: number) {
 
-        this.engineService.setCategory(categoryID)
+        this.engineService.setHouseCategory(houseCategoryID)
 
     }
 

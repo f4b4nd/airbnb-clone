@@ -10,14 +10,14 @@ export class EngineService {
 
     store = inject(Store)
 
-    category$$ = this.store.selectSignal(engineFeature.selectCategory)
+    houseCategory$$ = this.store.selectSignal(engineFeature.selectHouseCategory)
 
-    setCategory (categoryID: number) {
-        this.store.dispatch(engineActions.setCategory({categoryID}))
+    setHouseCategory (houseCategoryID: number) {
+        this.store.dispatch(engineActions.setHouseCategory({houseCategoryID}))
     }
 
-    unsetCategory () {
-        this.store.dispatch(engineActions.unsetCategory())
+    unsetHouseCategory () {
+        this.store.dispatch(engineActions.unsetHouseCategory())
     }
 
 }

@@ -14,47 +14,47 @@
 
     <card-group 
         class="grid grid-cols-auto-270px auto-rows-[400px] gap-4"
-        [items]="(apartments$ | async) || []"
+        [items]="(houses$ | async) || []"
     >
 
         <a 
-            *ngFor="let apartment of apartments$ | async"
-            routerLink="/apartment/{{apartment.id}}"
+            *ngFor="let house of houses$ | async"
+            routerLink="/house/{{house.id}}"
         >
 
             <card
                 class="card h-full flex flex-col"
-                [title]="apartment.name" 
-                [src]="apartment.picture_url"
+                [title]="house.name" 
+                [src]="house.picture_url"
             > 
 
                 <div class="card__body flex flex-col py-2" >
                     <card-row class="card__row flex justify-between gap-2"> 
                         <card-text 
                             class="card__title font-medium text-ellipsis overflow-hidden whitespace-nowrap" 
-                            [text]="apartment.neighbourhood">
+                            [text]="house.neighbourhood">
                         </card-text>
 
                         <div class="card__ratings flex items-center gap-1">
                             <img src="./assets/icons/star.svg" alt="star" class="w-[12px] h-[12px]"/>
-                            <card-text class="card__text" [text]="apartment.review_scores_accuracy | toString"/>
+                            <card-text class="card__text" [text]="house.review_scores_accuracy | toString"/>
                         </div>
 
                     </card-row>
 
                     <card-text 
                         class="card__text text-zinc-500 text-ellipsis overflow-hidden whitespace-nowrap" 
-                        [text]="apartment.name">
+                        [text]="house.name">
                     </card-text>
 
                     <card-row class="card__row text-ellipsis overflow-hidden whitespace-nowrap">
-                        <card-text class="card__text text-zinc-500" [text]="apartment.property_type"/>
+                        <card-text class="card__text text-zinc-500" [text]="house.property_type"/>
                         <card-text class="card__text text-zinc-500" text="·"/>
-                        <card-text class="card__text text-zinc-500" [text]="apartment.host_name"/>
+                        <card-text class="card__text text-zinc-500" [text]="house.host_name"/>
                     </card-row>
 
                     <card-row class="card__row mt-1 flex gap-1">
-                        <card-text class="card__text font-medium" [text]="apartment.price | toLocaleCurrency"/>
+                        <card-text class="card__text font-medium" [text]="house.price | toLocaleCurrency"/>
                         <card-text class="card__text" text="par nuit"/>
                     </card-row>
                     

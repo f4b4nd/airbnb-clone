@@ -1,8 +1,9 @@
 import { NgClass } from '@angular/common'
 import { Component, Input } from '@angular/core'
+import { RouterLink } from '@angular/router'
+
 import { TopNavbarProfileComponent } from './top-navbar.profile.component'
 import { TopNavbarSearchComponent } from './top-navbar.search.component'
-import { RouterLink } from '@angular/router'
 
 @Component({
     selector: 'top-navbar',

@@ -2,33 +2,33 @@
 
 
 
-@if (apartment$ | async; as apartment) {
+@if (house$ | async; as house) {
 
     <gallery-full 
         *ngIf="displayFullGallery"
-        [gallery]="apartment.gallery"
+        [gallery]="house.gallery"
         (hideFullGalleryEvent)="unsetDisplayFullGallery()"
     /> 
 
-    <div class="apartment">
+    <div class="house">
         
         <div class="container container-lg py-4">
 
             <div class="row mb-2">
-                <h1 class="title text-3xl font-medium"> {{apartment.name}}</h1>
+                <h1 class="title text-3xl font-medium"> {{house.name}}</h1>
             </div>
 
             <div class="row flex justify-between mb-4">
                 <div class="col flex gap-x-[1em]">
                     <span class="ratings flex gap-1"> 
                         <img src="./assets/icons/star.svg" class="w-[14px]"/>
-                        {{apartment.review_scores_accuracy}}
+                        {{house.review_scores_accuracy}}
                     </span>
                     <span class="comments"> 
-                        <button class="underline font-medium"> {{apartment.number_of_reviews}} commentaires</button>
+                        <button class="underline font-medium"> {{house.number_of_reviews}} commentaires</button>
                     </span>
                     <span class="location">                     
-                        <button class="underline font-medium"> {{apartment.neighbourhood}}</button>
+                        <button class="underline font-medium"> {{house.neighbourhood}}</button>
                     </span>
                 </div>
                 <div class="col flex gap-x-4">
@@ -45,8 +45,8 @@
 
                 
             <gallery-preview 
-                [gallery]="apartment.gallery" 
-                [alt]="apartment.name" 
+                [gallery]="house.gallery" 
+                [alt]="house.name" 
                 (displayFullGalleryEvent)="setDisplayFullGallery()"
             />
         
@@ -59,23 +59,23 @@
                         
                         <div class="col">
                             <div class="row text-xl font-medium">
-                                <span class="text after:content-['_·']"> {{apartment.property_type}}</span>
-                                <span class="text"> Chez {{apartment.host_name}}</span>
+                                <span class="text after:content-['_·']"> {{house.property_type}}</span>
+                                <span class="text"> Chez {{house.host_name}}</span>
                             </div>
 
                             <div class="row font-light">
-                                <span class="text after:content-['_·']"> {{apartment.accommodates}} voyageurs </span>
-                                <span class="text after:content-['_·']"> {{apartment.bedrooms}} chambres privées </span>
-                                <span class="text after:content-['_·']"> {{apartment.beds}} lits </span>
-                                <span class="text"> {{apartment.bathrooms}} salle de bain privée </span>            
+                                <span class="text after:content-['_·']"> {{house.accommodates}} voyageurs </span>
+                                <span class="text after:content-['_·']"> {{house.bedrooms}} chambres privées </span>
+                                <span class="text after:content-['_·']"> {{house.beds}} lits </span>
+                                <span class="text"> {{house.bathrooms}} salle de bain privée </span>            
                             </div>
                         </div>
 
                         <div class="col">
                             <img 
                                 class="w-[56px] rounded-[50px]"
-                                [src]="apartment.host_picture_url" 
-                                [alt]="apartment.host_location"
+                                [src]="house.host_picture_url" 
+                                [alt]="house.host_location"
                             >
                         </div>
 
@@ -97,13 +97,13 @@
 
                     <div 
                         class="description font-semilight py-4 border-t" 
-                        [innerHTML]="apartment.description">
+                        [innerHTML]="house.description">
                     </div>
 
                 </div>
 
                 <div class="col-right min-w-[370px] py-4 ">
-                    <booking-form  class="" [apartment]="apartment" />
+                    <booking-form  class="" [house]="house" />
                 </div>
 
             </div>
