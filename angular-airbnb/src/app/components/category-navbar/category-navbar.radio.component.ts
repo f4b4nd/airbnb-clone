@@ -4,7 +4,7 @@ import { CapitalizePipe } from '../../pipes'
 
 
 @Component({
-    selector: 'category-navbar-checkbox',
+    selector: 'category-navbar-radio',
     standalone: true,
     imports: [CapitalizePipe],
     styles: `
@@ -30,7 +30,8 @@ import { CapitalizePipe } from '../../pipes'
         <label class="category-nav-item">
 
             <input
-                type="checkbox"
+                type="radio"
+                name="category-nav-group"
                 class="hidden"
                 [checked]="isActive$$()"
                 [disabled]="isActive$$()"
@@ -57,7 +58,7 @@ import { CapitalizePipe } from '../../pipes'
     `,
 })
 
-export class CategoryNavbarCheckboxComponent {
+export class CategoryNavbarRadioComponent {
 
     @Input() isActive$$!: Signal<boolean>
 

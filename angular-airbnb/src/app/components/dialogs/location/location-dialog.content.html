@@ -1,0 +1,35 @@
+<h4 mat-dialog-title class="text-md">Rechercher par régions</h4>
+
+<mat-dialog-content class="mat-typography">
+
+    <div class="grid grid-cols-3 gap-x-5 gap-y-4">
+
+        @for (location of this.locations; track location.id) {
+
+            <label mat-dialog-close class="location-item">
+
+                <input 
+                    type="radio"
+                    class="hidden"
+                    name="location-item-group"
+                >
+
+                <div 
+                    class="location__wrapper flex flex-col gap-1.5 p-2 rounded-lg"
+                >
+                    <img
+                        class="location__img w-[110px] h-[110px] rounded-lg"
+                        [src]="'./assets/icons/locations/' + location.img" 
+                        [alt]="location.name" 
+                    />
+
+                    <span class="location__name text-sm">{{location.name}}</span>
+
+                </div>
+
+            </label>
+        }
+
+    </div>
+
+</mat-dialog-content>

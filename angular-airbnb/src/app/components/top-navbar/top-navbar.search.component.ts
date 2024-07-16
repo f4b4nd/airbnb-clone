@@ -1,26 +1,20 @@
 import { Component } from '@angular/core'
-import { DialogButtonComponent } from '../dialog/dialog.component'
+import { LocationDialogButtonComponent, GuestsDialogButtonComponent } from '../../components'
 
 @Component({
     selector: 'top-navbar-search',
     standalone: true,
-    imports: [DialogButtonComponent],
+    imports: [LocationDialogButtonComponent, GuestsDialogButtonComponent],
     template: `
         <div class="search flex items-center px-3 py-2 border rounded-[50px] gap-4 text-sm">
 
-            <dialog-button />
-            
-            <div class="search__location px-2 border-r">
-                <button class="font-medium"> N'importe où </button>
-            </div>
+            <location-dialog-button />
 
             <div class="search__dates px-2 border-r ">
                 <button class="font-medium"> Une semaine </button>
             </div>
 
-            <div class="search__travellers px-1 ">
-                <button class="text-neutral-500	"> Ajouter des voyageurs </button>
-            </div>
+            <guests-dialog-button />
 
             <div class="search__submit">
                 <button 

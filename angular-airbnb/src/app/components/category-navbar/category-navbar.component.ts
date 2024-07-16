@@ -5,12 +5,12 @@ import { AsyncPipe } from '@angular/common'
 import { HouseCategoriesGateway } from '../../services/houseCategories.gateway'
 import { EngineService } from '../../../state/engine.service'
 
-import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.component'
+import { CategoryNavbarRadioComponent } from './category-navbar.radio.component'
 
 @Component({
     selector: 'category-navbar',
     standalone: true,
-    imports: [CategoryNavbarCheckboxComponent, AsyncPipe],
+    imports: [CategoryNavbarRadioComponent, AsyncPipe],
     template: `
 
         <div class="category-navbar hidden-scrollbar overflow-x-scroll bg-white py-4">
@@ -19,7 +19,7 @@ import { CategoryNavbarCheckboxComponent } from './category-navbar.checkbox.comp
 
                 @for (houseCategory of houseCategories$ | async; track houseCategory.id) {
 
-                    <category-navbar-checkbox 
+                    <category-navbar-radio 
                         [isActive$$]="this.isActiveItem$$(houseCategory.id)"
                         [houseCategory]="houseCategory"
                         (onChangeEmitter)="this.onChange(houseCategory.id)"
