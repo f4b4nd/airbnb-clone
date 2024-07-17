@@ -35,7 +35,7 @@ import { CapitalizePipe } from '../../pipes'
                 class="hidden"
                 [checked]="isActive$$()"
                 [disabled]="isActive$$()"
-                (change)="this.onChange(houseCategory.id)"
+                (change)="onChange(houseCategory.id)"
             />
 
             <span 
@@ -70,7 +70,7 @@ export class CategoryNavbarRadioComponent {
     onChange (houseCategoryID: number) {
 
         this.onChangeEmitter.emit(houseCategoryID)
-
+        
     }
 
 }

@@ -11,6 +11,7 @@ export { CounterButtonComponent } from './buttons/counter.button'
 
 export { FilterModalButtonComponent } from './filter-modal/filter-modal.button.component'
 
+
 export { GalleryFullComponent } from './gallery/gallery.full.component'
 export { GalleryPreviewComponent } from './gallery/gallery.preview.component'
 
@@ -19,3 +20,7 @@ export { GuestsDialogButtonComponent } from './dialogs/guests/guests-dialog.butt
 export { LocationDialogButtonComponent } from './dialogs/location/location-dialog.button.component'
 
 export { TopNavbarComponent } from './top-navbar/top-navbar.component'
+
+
+/* Cause a TypeError (cannot read property ecmp) because of material-ui + multiple standalones components ? */
+// export { NavbarSearchFormComponent } from './forms/navbar-search-form.component'

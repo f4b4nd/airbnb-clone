@@ -1,13 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ModelSignal, Output, inject, model } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
-import { MatDialogModule} from '@angular/material/dialog'
+import { MatDialogModule, MatDialogRef} from '@angular/material/dialog'
 
+import { SearchLocationOptions } from '../../../constants'
 
 @Component({
     selector: 'location-dialog-content',
     templateUrl: 'location-dialog.content.html',
     standalone: true,
-    imports: [MatDialogModule, MatButtonModule],
+    imports: [ MatDialogModule, MatButtonModule],
     changeDetection: ChangeDetectionStrategy.OnPush,
     styles: `
         $gainsboro: #DCDCDC;
@@ -22,13 +23,13 @@ import { MatDialogModule} from '@angular/material/dialog'
     `,
 })
 export class LocationDialogContentComponent {
+    
+    readonly dialogRef = inject(MatDialogRef<LocationDialogContentComponent>)
 
-    public locations = [
-        { id: 1, name: 'Je suis flexible', img: 'world.jpg' },
-        { id: 2, name: 'Afrique', img: 'africa.jpg' },
-        { id: 3, name: 'Italie', img: 'italia.jpg' },
-        { id: 4, name: 'Amérique du sud', img: 'south-america.jpg' },
-        { id: 5, name: 'Asie du sud-est', img: 'south-asia.jpg' },
-        { id: 6, name: 'Espagne', img: 'spain.jpg' },
-    ]
+    public locations = SearchLocationOptions
+
+    setLocation (location: SearchLocationOption) {
+        this.dialogRef.close({data: {location}})
+    }
+
 }

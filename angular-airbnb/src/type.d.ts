@@ -29,6 +29,12 @@ type House = {
     bathrooms: string,
 }
 
+type SearchLocationOption = {
+    id: number,
+    name: string,
+    img: string,
+}
+
 type APIResponse = {
     houses: {
         data: House[]

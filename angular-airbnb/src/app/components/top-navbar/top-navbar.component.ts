@@ -3,13 +3,14 @@ import { Component, Input } from '@angular/core'
 import { RouterLink } from '@angular/router'
 
 import { TopNavbarProfileComponent } from './top-navbar.profile.component'
-import { TopNavbarSearchComponent } from './top-navbar.search.component'
+import { NavbarSearchFormComponent } from '../forms/navbar-search-form.component'
+
 
 @Component({
     selector: 'top-navbar',
     standalone: true,
     imports: [
-        TopNavbarProfileComponent, TopNavbarSearchComponent,
+        TopNavbarProfileComponent, NavbarSearchFormComponent,
         NgClass, RouterLink,
     ],
     template: `
@@ -28,7 +29,7 @@ import { TopNavbarSearchComponent } from './top-navbar.search.component'
                     </a>
                 </div>
 
-                <top-navbar-search> </top-navbar-search>
+                <navbar-search-form />
 
                 <div class="col flex items-center gap-4">
 
@@ -44,7 +45,7 @@ import { TopNavbarSearchComponent } from './top-navbar.search.component'
                         </button>
                     </div>
 
-                    <top-navbar-profile> </top-navbar-profile>
+                    <top-navbar-profile />
 
                 </div>
 

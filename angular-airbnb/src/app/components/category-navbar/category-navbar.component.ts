@@ -22,7 +22,7 @@ import { CategoryNavbarRadioComponent } from './category-navbar.radio.component'
                     <category-navbar-radio 
                         [isActive$$]="this.isActiveItem$$(houseCategory.id)"
                         [houseCategory]="houseCategory"
-                        (onChangeEmitter)="this.onChange(houseCategory.id)"
+                        (onChangeEmitter)="setHouseCategory($event)"
                     />
 
                 }
@@ -61,10 +61,8 @@ export class CategoryNavbarComponent implements OnInit {
     
     }
     
-    onChange (houseCategoryID: number) {
-
+    setHouseCategory (houseCategoryID: number) {
         this.engineService.setHouseCategory(houseCategoryID)
-
     }
 
 }

@@ -5,13 +5,14 @@
     <div class="grid grid-cols-3 gap-x-5 gap-y-4">
 
         @for (location of this.locations; track location.id) {
-
+            
             <label mat-dialog-close class="location-item">
 
-                <input 
+                <input
                     type="radio"
                     class="hidden"
                     name="location-item-group"
+                    (change)="setLocation(location)"
                 >
 
                 <div 
@@ -28,6 +29,7 @@
                 </div>
 
             </label>
+
         }
 
     </div>
