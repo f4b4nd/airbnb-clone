@@ -1,8 +1,11 @@
-import { Component } from '@angular/core'
+import { AsyncPipe } from '@angular/common'
+import { Component, EventEmitter, Input, Output, Signal, WritableSignal, signal } from '@angular/core'
+import { Observable, Subject, map, of } from 'rxjs'
 
 @Component({
     selector: 'counter-button',
     standalone: true,
+    imports: [AsyncPipe],
     styles: `
 
         $gainsboro: #DCDCDC;
@@ -31,14 +34,14 @@ import { Component } from '@angular/core'
             <div class="decrement-btn hover:cursor-pointer">
                 <button 
                     class="border rounded-full"
-                    [disabled]="this.counter <= 0"
+                    [disabled]="(counter$ | async)! <= 0"
                     (click)="this.decrement()"
                 >
                     <span class="icon">&#8722;</span>
                 </button>
             </div>
 
-            <span class="counter__count"> {{counter}} </span>
+            <span class="counter__count">{{counter$ | async}}</span>
             
             <div class="increment-btn hover:cursor-pointer">
                 <button 
@@ -54,18 +57,24 @@ import { Component } from '@angular/core'
 })
 
 export class CounterButtonComponent {
+    
+    @Input() counter$: Observable<number> = of(0)
 
-    counter: number = 0
+    @Output() onChangeEmitter = new EventEmitter<Observable<number>>
 
     decrement() {
 
-        if (this.counter <= 0) {
-            return
-        }
-        this.counter -= 1
+        this.counter$ = this.counter$.pipe(map(v => v > 0 ? v - 1: 0))
+        
+        this.onChangeEmitter.emit(this.counter$)
+
     }
 
     increment() {
-        this.counter += 1
+
+        this.counter$ = this.counter$.pipe(map(v => v + 1))
+        
+        this.onChangeEmitter.emit(this.counter$)
+
     }
 }

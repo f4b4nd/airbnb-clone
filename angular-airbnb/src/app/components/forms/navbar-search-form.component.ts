@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
 
 import { LocationDialogButtonComponent, GuestsDialogButtonComponent } from '../../components'
+import { GuestsCounter } from '../dialogs/guests/guests-dialog.button.component'
 
 @Component({
     selector: 'navbar-search-form',
@@ -11,33 +12,23 @@ import { LocationDialogButtonComponent, GuestsDialogButtonComponent } from '../.
     template: `
         <form
             [formGroup]="searchForm"
-            (ngSubmit)="this.onSubmit()"
+            (ngSubmit)="onSubmit()"
             class="search flex items-center px-3 py-2 border rounded-[50px] gap-4 text-sm"
         >
 
             <location-dialog-button 
                 id="locationID"
-                formControlName="locationID"
                 (onChangeEmitter)="setLocation($event)"
             />
 
-            <input
-                id="locationID2"
-                type="number"
-                formControlName="location"
-   
-            >
-
-            <input
-                id="aze"
-                type="text"
-            >
 
             <div class="search__dates px-2 border-r ">
                 <button class="font-medium"> Une semaine </button>
             </div>
 
-            <guests-dialog-button />
+            <guests-dialog-button 
+                (onChangeEmitter)="setGuestsCounter($event)"
+            />
 
             <div class="search__submit">
 
@@ -66,9 +57,12 @@ export class NavbarSearchFormComponent {
 
     searchForm = new FormGroup({
         location: new FormControl<SearchLocationOption|null>(null, 
-            [Validators.required]
         ),
-    
+
+        guestsCounter: new FormControl<GuestsCounter|null>(null, 
+            [Validators.required]
+        )
+
     })
 
     get location () {
@@ -76,8 +70,11 @@ export class NavbarSearchFormComponent {
     }
 
     setLocation ($event: SearchLocationOption) {
-        this.searchForm.setValue({location: $event})
-        console.log('searchForm', $event)
+        this.searchForm.patchValue({location: $event})
+    }
+
+    setGuestsCounter ($event: GuestsCounter) {
+        this.searchForm.patchValue({guestsCounter: $event})
     }
 
     onSubmit () {
@@ -85,7 +82,7 @@ export class NavbarSearchFormComponent {
             console.log('submit invalid')
             return
         }
-        console.log('form submit', this.searchForm.value)
+        console.table(this.searchForm.value)
     }
 
 }

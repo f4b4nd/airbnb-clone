@@ -16,14 +16,14 @@ import { NgIf } from '@angular/common'
                 <span class="text-md"> Destination </span>
 
                 @if (location$$(); as location) {
-                    <span class="text-xs text-gray-400">
-                        {{ location.id > 0 ? location.name : 'Rechercher une région' }}
-                    </span>
+
+                    <span *ngIf="location.id > 0" class="text-xs text-gray-400">{{location.name}}</span>
+
+                    <span *ngIf="location.id <= 0" class="text-xs text-gray-400">Rechercher une région</span>
+
                 }
                 @else {
-                    <span class="text-xs text-gray-400">
-                        Rechercher une région'
-                    </span>
+                    <span class="text-xs text-gray-400">Rechercher une région</span>
                 }
                 
                 

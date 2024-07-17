@@ -9,7 +9,9 @@
                 <span class=""> 13 ans et plus </span>
             </div>
 
-            <counter-button />
+            <counter-button 
+                (onChangeEmitter)="setAdultsCount($event)" 
+            />
 
         </div>
 
@@ -21,7 +23,7 @@
                 <span class=""> De 2 à 12 ans </span>
             </div>
 
-            <counter-button />
+            <counter-button (onChangeEmitter)="setChildrenCount($event)" />
 
         </div>
 
@@ -32,7 +34,7 @@
                 <span class=""> - de 2 ans </span>
             </div>
 
-            <counter-button />
+            <counter-button  (onChangeEmitter)="setBabiesCount($event)" />
 
         </div>
 
@@ -43,7 +45,7 @@
                 <span class="font-bold text-black"> Animaux domestiques </span>
             </div>
 
-            <counter-button />
+            <counter-button (onChangeEmitter)="setPetsCount($event)" />
 
         </div>
 
