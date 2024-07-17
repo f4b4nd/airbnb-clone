@@ -18,7 +18,7 @@ export type GuestsCounter = {
 @Component({
     selector: 'guests-dialog-button',
     template: `
-        <button mat-button (click)="openDialog()">
+        <button mat-button type="button" (click)="openDialog()">
 
             <span class="flex flex-col text-start">
 

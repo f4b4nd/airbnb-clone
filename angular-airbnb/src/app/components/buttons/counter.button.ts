@@ -32,7 +32,8 @@ import { Observable, Subject, map, of } from 'rxjs'
         <div class="counter-button__wrapper flex gap-3 items-center">
 
             <div class="decrement-btn hover:cursor-pointer">
-                <button 
+                <button
+                    type="button"
                     class="border rounded-full"
                     [disabled]="(counter$ | async)! <= 0"
                     (click)="this.decrement()"
@@ -45,6 +46,7 @@ import { Observable, Subject, map, of } from 'rxjs'
             
             <div class="increment-btn hover:cursor-pointer">
                 <button 
+                    type="button"
                     class="border rounded-full" 
                     (click)="this.increment()"
                 >   

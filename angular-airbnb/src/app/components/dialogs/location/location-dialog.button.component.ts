@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, WritableSignal, computed, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, WritableSignal, signal } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 
@@ -9,7 +9,7 @@ import { NgIf } from '@angular/common'
 @Component({
     selector: 'location-dialog-button',
     template: `
-        <button mat-button (click)="openDialog()">
+        <button mat-button type="button" (click)="openDialog()">
 
             <span class="flex flex-col text-start">
 
