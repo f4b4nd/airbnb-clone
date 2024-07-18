@@ -1,13 +1,15 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
 
 import { LocationDialogButtonComponent, GuestsDialogButtonComponent } from '../../components'
 import { GuestsCounter } from '../dialogs/guests/guests-dialog.button.component'
+import { DatepickerDialogComponent } from '../dialogs/date/datepicker.dialog.component'
+import { DatepickerButtonComponent } from '../dialogs/date/datepicker.button.component'
 
 @Component({
     selector: 'navbar-search-form',
     standalone: true,
-    imports: [LocationDialogButtonComponent, GuestsDialogButtonComponent, ReactiveFormsModule],
+    imports: [LocationDialogButtonComponent, GuestsDialogButtonComponent, ReactiveFormsModule, DatepickerButtonComponent, DatepickerDialogComponent],
 
     template: `
         <form
@@ -18,13 +20,21 @@ import { GuestsCounter } from '../dialogs/guests/guests-dialog.button.component'
 
             <location-dialog-button 
                 id="locationID"
+                [form]="searchForm"
                 (onChangeEmitter)="setLocation($event)"
             />
 
 
-            <div class="search__dates px-2 border-r ">
-                <button class="font-medium"> Une semaine </button>
-            </div>
+            <datepicker-button 
+                title="Arrivée"
+                (onChangeEmitter)="setArrivalDate($event)" 
+            />
+
+            <datepicker-button 
+                title="Départ" 
+                (onChangeEmitter)="setLeavingDate($event)" 
+            />
+
 
             <guests-dialog-button 
                 (onChangeEmitter)="setGuestsCounter($event)"
@@ -57,11 +67,23 @@ export class NavbarSearchFormComponent {
 
     searchForm = new FormGroup({
         location: new FormControl<SearchLocationOption|null>(null, 
+            [Validators.required]
         ),
 
         guestsCounter: new FormControl<GuestsCounter|null>(null, 
+            [   
+                Validators.required,
+                Validators.min(0),
+            ]
+        ),
+
+        arrivalDate: new FormControl<Date|null>(null, 
             [Validators.required]
-        )
+        ),
+
+        leavingDate: new FormControl<Date|null>(null, 
+            [Validators.required]
+        ),
 
     })
 
@@ -75,6 +97,14 @@ export class NavbarSearchFormComponent {
 
     setGuestsCounter ($event: GuestsCounter) {
         this.searchForm.patchValue({guestsCounter: $event})
+    }
+
+    setArrivalDate ($event: Date) {
+        this.searchForm.patchValue({arrivalDate: $event})
+    }
+
+    setLeavingDate ($event: Date) {
+        this.searchForm.patchValue({leavingDate: $event})
     }
 
     onSubmit () {

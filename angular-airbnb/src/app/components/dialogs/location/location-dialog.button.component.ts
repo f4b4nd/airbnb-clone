@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, WritableSignal, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output, WritableSignal, signal } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
-import { MatDialog, MatDialogModule } from '@angular/material/dialog'
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog'
 
 import { LocationDialogContentComponent } from './location-dialog.content.component'
 import { NgIf } from '@angular/common'
+import { FormGroup } from '@angular/forms'
 
 
 @Component({
@@ -32,22 +33,26 @@ import { NgIf } from '@angular/common'
         </button>
     `,
     standalone: true,
-    imports: [MatButtonModule, MatDialogModule, NgIf],
+    imports: [ MatButtonModule, MatDialogModule, NgIf ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationDialogButtonComponent {
 
     constructor(private readonly dialog: MatDialog) {}
 
+    @Input() form!: FormGroup
+
+    @Output() onChangeEmitter = new EventEmitter<SearchLocationOption>
+
     public location$$: WritableSignal<SearchLocationOption|null> = signal(null)
     
-    @Output() onChangeEmitter = new EventEmitter<SearchLocationOption>
     
     openDialog () {
 
         const dialogRef = this.dialog.open(LocationDialogContentComponent, {
             data: {
-                location: this.location$$()
+                location: this.location$$(),
+                form: this.form,
             },
         })
 

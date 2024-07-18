@@ -2,7 +2,7 @@
 
 <mat-dialog-content class="mat-typography">
 
-    <div class="grid grid-cols-3 gap-x-5 gap-y-4">
+    <div [formGroup]="data.form" class="grid grid-cols-3 gap-x-5 gap-y-4">
 
         @for (location of this.locations; track location.id) {
             
@@ -11,7 +11,7 @@
                 <input
                     type="radio"
                     class="hidden"
-                    name="location-item-group"
+                    formControlName="location"
                     (change)="setLocation(location)"
                 >
 
