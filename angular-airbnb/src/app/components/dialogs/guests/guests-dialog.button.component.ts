@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 
 import { GuestsDialogService } from '../../../services/guestsDialogService'
 import { GuestsDialogContentComponent } from './guests-dialog.content.component'
-import { Observable } from 'rxjs'
+import { Observable, switchMap, take } from 'rxjs'
 import { AsyncPipe, NgIf } from '@angular/common'
 
 export type GuestsCounter = {
@@ -28,7 +28,7 @@ export type GuestsCounter = {
 
                     <span 
                         *ngIf="getTotalGuestsCounter(guests) > 0" 
-                        class="text-xs text-gray-400"
+                        class="text-md"
                     > 
                         {{ getTotalGuestsCounter(guests) + ' voyageur(s)'  }}
                     </span>
@@ -79,14 +79,15 @@ export class GuestsDialogButtonComponent {
         })
 
 
-        dialogRef.afterClosed().subscribe(() => {
-
-            this.guestsCounter$.subscribe(guestsCounter => {
+        dialogRef.afterClosed()
+            .pipe(
+                switchMap(() => this.guestsCounter$),
+            )
+            .subscribe(guestsCounter => {
                 if (!guestsCounter) return
                 this.onChangeEmitter.emit(guestsCounter)
             })
-            
-        })
+    
 
     }
 

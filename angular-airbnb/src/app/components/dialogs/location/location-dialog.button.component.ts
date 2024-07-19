@@ -18,7 +18,7 @@ import { FormGroup } from '@angular/forms'
 
                 @if (location$$(); as location) {
 
-                    <span *ngIf="location.id > 0" class="text-xs text-gray-400">{{location.name}}</span>
+                    <span *ngIf="location.id > 0" class="text-md">{{location.name}}</span>
 
                     <span *ngIf="location.id <= 0" class="text-xs text-gray-400">Rechercher une région</span>
 

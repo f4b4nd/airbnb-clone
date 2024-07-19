@@ -18,7 +18,7 @@ import { DatepickerDialogComponent } from './datepicker.dialog.component'
                 <span class="text-md"> {{title}} </span> 
 
                 @if (selectedDate$$(); as selectedDate) {
-                    <span class="text-xs text-gray-400">
+                    <span class="text-md">
                         {{selectedDate | date: 'd MMMM'}} 
                     </span>
                 }

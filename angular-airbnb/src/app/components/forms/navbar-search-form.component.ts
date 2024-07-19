@@ -24,7 +24,6 @@ import { DatepickerButtonComponent } from '../dialogs/date/datepicker.button.com
                 (onChangeEmitter)="setLocation($event)"
             />
 
-
             <datepicker-button 
                 title="Arrivée"
                 (onChangeEmitter)="setArrivalDate($event)" 
@@ -66,6 +65,7 @@ export class NavbarSearchFormComponent {
     submitLogoSrc = "./assets/icons/loupe.svg"
 
     searchForm = new FormGroup({
+
         location: new FormControl<SearchLocationOption|null>(null, 
             [Validators.required]
         ),

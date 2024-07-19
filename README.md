@@ -28,23 +28,6 @@ ng serve
 
 This application is hosted at URL : [https://f4b4nd.github.io/airbnb-clone/](https://f4b4nd.github.io/airbnb-clone/)
 
-This project is deployed on github pages, by using : angular-cli-ghpages
-
-Github-page triggers everytime build production folder (located at /docs) is updated.
-
-To create build production folder :
-```
-npm run build:prod
-```
-
-
-cf links : 
-https://medium.com/swlh/how-to-deploy-an-angular-app-to-github-pages-without-using-any-libraries-step-by-step-guide-cfe96fb0c879
-
-https://www.c-sharpcorner.com/blogs/a-guide-on-how-to-deploy-angular-applications-to-github-pages#:~:text=To%20deploy%20an%20Angular%20application%20to%20GitHub%20Pages%20you%20have,be%20deployed%20using%20GitHub%20Pages.
-
-
-https://www.syncfusion.com/blogs/post/easy-steps-to-host-an-angular-app-in-github-pages.aspx
 
 
 ## 3. TODO :
