@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output, WritableSignal, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog'
 
 import { LocationDialogContentComponent } from './location-dialog.content.component'
-import { NgIf } from '@angular/common'
+import { AsyncPipe, NgIf } from '@angular/common'
 import { FormGroup } from '@angular/forms'
+import { Observable, map, of, take } from 'rxjs'
 
 
 @Component({
@@ -16,7 +17,7 @@ import { FormGroup } from '@angular/forms'
 
                 <span class="text-md"> Destination </span>
 
-                @if (location$$(); as location) {
+                @if (location$ | async; as location) {
 
                     <span *ngIf="location.id > 0" class="text-md">{{location.name}}</span>
 
@@ -33,7 +34,7 @@ import { FormGroup } from '@angular/forms'
         </button>
     `,
     standalone: true,
-    imports: [ MatButtonModule, MatDialogModule, NgIf ],
+    imports: [ MatButtonModule, MatDialogModule, NgIf, AsyncPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationDialogButtonComponent {
@@ -43,24 +44,28 @@ export class LocationDialogButtonComponent {
     @Input() form!: FormGroup
 
     @Output() onChangeEmitter = new EventEmitter<SearchLocationOption>
+    
+    public location$: Observable<SearchLocationOption|null> = of(null)
 
-    public location$$: WritableSignal<SearchLocationOption|null> = signal(null)
-    
-    
     openDialog () {
 
         const dialogRef = this.dialog.open(LocationDialogContentComponent, {
             data: {
-                location: this.location$$(),
                 form: this.form,
             },
         })
 
-        dialogRef.afterClosed().subscribe(res => {
-            const location: SearchLocationOption = res.data.location
-            this.location$$.set(location)
+        this.location$ = dialogRef.afterClosed()
+            .pipe(
+                take(1),
+                map(res => (res?.data?.location) as SearchLocationOption),
+            )
+        
+        this.location$.subscribe((location) => {
+            if (!location) return
             this.onChangeEmitter.emit(location)
         })
+        
     }
 
 }

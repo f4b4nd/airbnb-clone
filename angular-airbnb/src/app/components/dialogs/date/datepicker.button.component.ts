@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, WritableSignal, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialog } from '@angular/material/dialog'
 
 import { AsyncPipe, DatePipe, NgIf } from '@angular/common'
 import { DatepickerDialogComponent } from './datepicker.dialog.component'
+import { Observable, map, of, take } from 'rxjs'
 
 
 
@@ -17,7 +18,7 @@ import { DatepickerDialogComponent } from './datepicker.dialog.component'
                 
                 <span class="text-md"> {{title}} </span> 
 
-                @if (selectedDate$$(); as selectedDate) {
+                @if (selectedDate$ | async; as selectedDate) {
                     <span class="text-md">
                         {{selectedDate | date: 'd MMMM'}} 
                     </span>
@@ -44,7 +45,8 @@ export class DatepickerButtonComponent {
 
     @Output() onChangeEmitter = new EventEmitter<Date>
 
-    public selectedDate$$: WritableSignal<Date|null> = signal(null)
+
+    public selectedDate$: Observable<Date|null> = of(null)
 
     openDialog () {
         
@@ -52,15 +54,18 @@ export class DatepickerButtonComponent {
             width: '400px',
         })
 
-
-        dialogRef.afterClosed().subscribe((res) => {
-            console.table(res.data)
-            const selectedDate = res?.data?.date
+        this.selectedDate$ = dialogRef.afterClosed()
+            .pipe(
+                take(1),
+                map((res) => (res?.data?.date) as Date),
+            )
+        
+        this.selectedDate$.subscribe(selectedDate => {
             if (!selectedDate) return
-            this.selectedDate$$.set((selectedDate as Date))
-            this.onChangeEmitter.emit((selectedDate as Date))
+            this.onChangeEmitter.emit(selectedDate)
         })
-
+        
+  
     }
 
 }

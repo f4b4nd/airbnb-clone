@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, Inject, ModelSignal, Output, inject, model } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog'
 
 import { SearchLocationOptions } from '../../../constants'
 import { ReactiveFormsModule } from '@angular/forms'
+import { Observable } from 'rxjs'
 
 @Component({
     selector: 'location-dialog-content',
@@ -28,7 +29,6 @@ export class LocationDialogContentComponent {
     readonly dialogRef = inject(MatDialogRef<LocationDialogContentComponent>)
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
-
 
     
     public locations = SearchLocationOptions

@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common'
-import { Component, EventEmitter, Input, Output, Signal, WritableSignal, signal } from '@angular/core'
-import { Observable, Subject, map, of } from 'rxjs'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Observable, map, of } from 'rxjs'
 
 @Component({
     selector: 'counter-button',
