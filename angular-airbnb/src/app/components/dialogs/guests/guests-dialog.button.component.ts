@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 
 import { GuestsDialogService } from '../../../services/guestsDialogService'
 import { GuestsDialogContentComponent } from './guests-dialog.content.component'
-import { Observable, switchMap, take } from 'rxjs'
+import { Observable, switchMap, take, takeUntil } from 'rxjs'
 import { AsyncPipe, NgIf } from '@angular/common'
 
 export type GuestsCounter = {

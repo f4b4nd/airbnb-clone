@@ -1,10 +1,10 @@
-import { NgClass, NgFor } from '@angular/common'
+import { NgClass } from '@angular/common'
 import { Component, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
     selector: 'gallery-full',
     standalone: true,
-    imports: [NgClass, NgFor],
+    imports: [NgClass],
     template: `
         <div class="gallery-full-container absolute top-0 left-0 w-full bg-white z-[2]">
 
@@ -15,17 +15,21 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
                 </div>
 
                 <div class="gallery grid grid-cols-[1fr_1fr]  gap-2 mx-auto max-w-[800px]">
-                    <div 
-                        *ngFor="let pictureUrl of gallery ; let i = index"
-                        class="img-container h-full w-full"
-                        [ngClass]="{'col-span-full' : i === 0 || (i + 1) % 3 === 1}"
-                    >
-                        <img 
-                            class="h-full w-full object-cover" 
-                            src={{pictureUrl}} 
-                            alt={{alt}}
-                        />
-                    </div>
+
+                    @for (pictureUrl of gallery; track pictureUrl; let i = $index) {
+                    
+                        <div 
+                            class="img-container h-full w-full"
+                            [ngClass]="{'col-span-full' : i === 0 || (i + 1) % 3 === 1}"
+                        >
+                            <img 
+                                class="h-full w-full object-cover" 
+                                src={{pictureUrl}} 
+                                alt={{alt}}
+                            />
+                        </div>
+
+                    }
                 </div>
 
             </div>

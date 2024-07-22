@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog'
 
 import { AsyncPipe, DatePipe, NgIf } from '@angular/common'
 import { DatepickerDialogComponent } from './datepicker.dialog.component'
-import { Observable, map, of, take } from 'rxjs'
+import { Observable, Subject, map, of, take, takeUntil } from 'rxjs'
 
 
 
@@ -48,6 +48,8 @@ export class DatepickerButtonComponent {
 
     public selectedDate$: Observable<Date|null> = of(null)
 
+    private unsubscribe$ = new Subject<boolean>()
+
     openDialog () {
         
         const dialogRef = this.dialog.open(DatepickerDialogComponent, {
@@ -56,7 +58,7 @@ export class DatepickerButtonComponent {
 
         this.selectedDate$ = dialogRef.afterClosed()
             .pipe(
-                take(1),
+                takeUntil(this.unsubscribe$),
                 map((res) => (res?.data?.date) as Date),
             )
         
@@ -68,4 +70,9 @@ export class DatepickerButtonComponent {
   
     }
 
-}
+    ngOnDestroy() {
+        this.unsubscribe$.next(true)
+        this.unsubscribe$.unsubscribe()
+    }
+
+}        

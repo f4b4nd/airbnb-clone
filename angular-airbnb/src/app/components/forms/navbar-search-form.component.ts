@@ -72,8 +72,7 @@ export class NavbarSearchFormComponent {
 
         guestsCounter: new FormControl<GuestsCounter|null>(null, 
             [   
-                Validators.required,
-                Validators.min(0),
+               //Validators.required,
             ]
         ),
 

@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/d
 import { LocationDialogContentComponent } from './location-dialog.content.component'
 import { AsyncPipe, NgIf } from '@angular/common'
 import { FormGroup } from '@angular/forms'
-import { Observable, map, of, take } from 'rxjs'
+import { Observable, Subject, map, of, take, takeUntil } from 'rxjs'
 
 
 @Component({
@@ -47,6 +47,8 @@ export class LocationDialogButtonComponent {
     
     public location$: Observable<SearchLocationOption|null> = of(null)
 
+    private unsubscribe$ = new Subject<boolean>()
+
     openDialog () {
 
         const dialogRef = this.dialog.open(LocationDialogContentComponent, {
@@ -57,7 +59,7 @@ export class LocationDialogButtonComponent {
 
         this.location$ = dialogRef.afterClosed()
             .pipe(
-                take(1),
+                takeUntil(this.unsubscribe$),
                 map(res => (res?.data?.location) as SearchLocationOption),
             )
         
@@ -66,6 +68,11 @@ export class LocationDialogButtonComponent {
             this.onChangeEmitter.emit(location)
         })
         
+    }
+
+    ngOnDestroy() {
+        this.unsubscribe$.next(true)
+        this.unsubscribe$.unsubscribe()
     }
 
 }

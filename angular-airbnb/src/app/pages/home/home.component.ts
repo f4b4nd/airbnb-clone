@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { ToLocaleCurrencyPipe, ToStringPipe } from '../../pipes'
 import { RouterLink } from '@angular/router'
 
-import { AsyncPipe, NgFor } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { HousesGateway } from '../../services/houses.gateway'
 import { Observable } from 'rxjs'
 
@@ -15,7 +15,7 @@ import { CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent,
         CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent,
         FilterModalButtonComponent, CategoryNavbarComponent, TopNavbarComponent,
         ToLocaleCurrencyPipe, ToStringPipe, RouterLink,
-        NgFor, AsyncPipe,
+        AsyncPipe,
     ],
 
 })
