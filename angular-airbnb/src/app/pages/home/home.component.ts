@@ -4,7 +4,9 @@ import { RouterLink } from '@angular/router'
 
 import { AsyncPipe } from '@angular/common'
 import { HousesGateway } from '../../services/houses.gateway'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 import { CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent, CategoryNavbarComponent, FilterModalButtonComponent, TopNavbarComponent } from '../../components'
 
@@ -14,6 +16,7 @@ import { CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent,
     imports: [
         CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent,
         FilterModalButtonComponent, CategoryNavbarComponent, TopNavbarComponent,
+        MatProgressSpinnerModule,
         ToLocaleCurrencyPipe, ToStringPipe, RouterLink,
         AsyncPipe,
     ],
@@ -22,8 +25,14 @@ import { CardComponent, CardGroupComponent, CardRowComponent, CardTextComponent,
 
 export class HomeComponent {
 
-    houses$: Observable<House[]> = this.housesGateway.fetchHouses() || []
+    houses$: Observable<House[]> = of([])
 
     constructor(private housesGateway: HousesGateway) {}
+
+    ngOnInit() {
+
+        this.houses$ = this.housesGateway.fetchHouses()
+        
+    }
 
 }

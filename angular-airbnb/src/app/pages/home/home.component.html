@@ -12,58 +12,69 @@
 
 <div class="home container container-xl py-8"> 
 
-    <card-group 
-        class="grid grid-cols-auto-270px auto-rows-[400px] gap-4"
-        [items]="(houses$ | async) || []"
-    >
-        @for (house of houses$ | async; track house.id) {
-            
-            <a 
-                routerLink="/house/{{house.id}}"
-            >
+    @if (houses$ | async; as houses) {
 
-                <card
-                    class="card h-full flex flex-col"
-                    [title]="house.name" 
-                    [src]="house.picture_url"
-                > 
+        <card-group 
+            class="grid grid-cols-auto-270px auto-rows-[400px] gap-4"
+        >
 
-                    <div class="card__body flex flex-col py-2" >
-                        <card-row class="card__row flex justify-between gap-2"> 
+            @for (house of houses; track house.id) {
+                
+                <a 
+                    routerLink="/house/{{house.id}}"
+                >
+
+                    <card
+                        class="card h-full flex flex-col"
+                        [title]="house.name" 
+                        [src]="house.picture_url"
+                    > 
+
+                        <div class="card__body flex flex-col py-2" >
+                            <card-row class="card__row flex justify-between gap-2"> 
+                                <card-text 
+                                    class="card__title font-medium text-ellipsis overflow-hidden whitespace-nowrap" 
+                                    [text]="house.neighbourhood">
+                                </card-text>
+
+                                <div class="card__ratings flex items-center gap-1">
+                                    <img src="./assets/icons/star.svg" alt="star" class="w-[12px] h-[12px]"/>
+                                    <card-text class="card__text" [text]="house.review_scores_accuracy | toString"/>
+                                </div>
+
+                            </card-row>
+
                             <card-text 
-                                class="card__title font-medium text-ellipsis overflow-hidden whitespace-nowrap" 
-                                [text]="house.neighbourhood">
+                                class="card__text text-zinc-500 text-ellipsis overflow-hidden whitespace-nowrap" 
+                                [text]="house.name">
                             </card-text>
 
-                            <div class="card__ratings flex items-center gap-1">
-                                <img src="./assets/icons/star.svg" alt="star" class="w-[12px] h-[12px]"/>
-                                <card-text class="card__text" [text]="house.review_scores_accuracy | toString"/>
-                            </div>
+                            <card-row class="card__row text-ellipsis overflow-hidden whitespace-nowrap">
+                                <card-text class="card__text text-zinc-500" [text]="house.property_type"/>
+                                <card-text class="card__text text-zinc-500" text="·"/>
+                                <card-text class="card__text text-zinc-500" [text]="house.host_name"/>
+                            </card-row>
 
-                        </card-row>
+                            <card-row class="card__row mt-1 flex gap-1">
+                                <card-text class="card__text font-medium" [text]="house.price | toLocaleCurrency"/>
+                                <card-text class="card__text" text="par nuit"/>
+                            </card-row>
+                            
+                        </div>
 
-                        <card-text 
-                            class="card__text text-zinc-500 text-ellipsis overflow-hidden whitespace-nowrap" 
-                            [text]="house.name">
-                        </card-text>
+                    </card>
 
-                        <card-row class="card__row text-ellipsis overflow-hidden whitespace-nowrap">
-                            <card-text class="card__text text-zinc-500" [text]="house.property_type"/>
-                            <card-text class="card__text text-zinc-500" text="·"/>
-                            <card-text class="card__text text-zinc-500" [text]="house.host_name"/>
-                        </card-row>
+                </a>
 
-                        <card-row class="card__row mt-1 flex gap-1">
-                            <card-text class="card__text font-medium" [text]="house.price | toLocaleCurrency"/>
-                            <card-text class="card__text" text="par nuit"/>
-                        </card-row>
-                        
-                    </div>
-                </card>
+            }
+            
+        </card-group>
 
-            </a>
-        }
+    } @else {
+        <div class="flex justify-center items-center h-[400px]">
+            <mat-spinner />
+        </div>
+    }
 
-    </card-group>
 
 </div>

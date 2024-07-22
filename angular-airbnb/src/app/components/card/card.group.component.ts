@@ -9,6 +9,4 @@ import { Component, Input } from "@angular/core"
         </ng-container>`,
 })
 
-export class CardGroupComponent {
-    @Input() items: any[] = []
-}
+export class CardGroupComponent {}

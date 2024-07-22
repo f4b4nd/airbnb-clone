@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Observable, map } from 'rxjs'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 
 import { AsyncPipe, NgIf } from '@angular/common'
 import { ToLocaleDatePipe } from '../../pipes'
@@ -16,6 +17,7 @@ import { BookingFormComponent, GalleryFullComponent, GalleryPreviewComponent, To
         BookingFormComponent,
         GalleryPreviewComponent, GalleryFullComponent,
         NgIf,
+        MatProgressSpinnerModule,
         ToLocaleDatePipe,
         AsyncPipe,
     ],
@@ -23,7 +25,7 @@ import { BookingFormComponent, GalleryFullComponent, GalleryPreviewComponent, To
 
 export class HouseComponent {
 
-    house$: Observable<House|undefined> = this.fetchHouse()
+    house$?: Observable<House|undefined>
 
     public today: Date = new Date()
 
@@ -56,6 +58,12 @@ export class HouseComponent {
 
         return this.houseGateway.fetchHouseByID(houseID$)
 
+    }
+
+    ngOnInit(): void {
+        
+        this.house$ = this.fetchHouse()
+        
     }
 
 

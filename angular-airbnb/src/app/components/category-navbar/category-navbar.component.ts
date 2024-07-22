@@ -1,5 +1,5 @@
 import { Component, OnInit, computed } from '@angular/core'
-import { Observable, take } from 'rxjs'
+import { Observable, Subject, take, takeUntil } from 'rxjs'
 import { AsyncPipe } from '@angular/common'
 
 import { HouseCategoriesGateway } from '../../services/houseCategories.gateway'
@@ -37,6 +37,7 @@ export class CategoryNavbarComponent implements OnInit {
 
     houseCategories$?: Observable<HouseCategory[]>
 
+    private unsubscribe$ = new Subject<boolean>()
     
     constructor(private houseCategoriesGateway: HouseCategoriesGateway, public engineService: EngineService) {}
 
@@ -50,7 +51,7 @@ export class CategoryNavbarComponent implements OnInit {
 
         this.houseCategories$
             .pipe(
-                take(1),
+                takeUntil(this.unsubscribe$),
             )
             .subscribe(houseCategories => {
                 if (houseCategories.length > 0) {
@@ -60,9 +61,15 @@ export class CategoryNavbarComponent implements OnInit {
             })
     
     }
+
+    ngOnDestroy() {
+        this.unsubscribe$.next(true)
+        this.unsubscribe$.unsubscribe      
+    }
     
     setHouseCategory (houseCategoryID: number) {
         this.engineService.setHouseCategory(houseCategoryID)
     }
+
 
 }

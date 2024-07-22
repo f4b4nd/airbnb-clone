@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { environment } from "../../environments/environment"
-import { Observable, combineLatest, map } from "rxjs"
+import { Observable, combineLatest, delay, map, timer } from "rxjs"
 
 @Injectable({
     providedIn: 'root',
@@ -22,6 +22,7 @@ export class HousesGateway {
         return this.http.get<APIResponse['houses']>(this._apiURLHouses, {headers})
             .pipe(
                 map(response => response.data),
+                delay(1000),
             )
 
     }
@@ -31,12 +32,18 @@ export class HousesGateway {
         // if API was real, it would call directly an endpoint specific to an houseID
         
         const houses$: Observable<House[]> = this.fetchHouses()
+        const minimumDelay$ = timer(1000)
 
-        return combineLatest([houses$, houseID$])
+        const request$ = combineLatest([houses$, houseID$])
             .pipe(
                 map(([houses, houseID]) => houses.find(house => `${house.id}` === houseID)),
             )
 
+        return combineLatest([request$, minimumDelay$])
+            .pipe(
+                map(([request, _]) => request),
+            )
+            
     }
 
 
